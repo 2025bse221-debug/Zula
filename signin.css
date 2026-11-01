@@ -1,0 +1,379 @@
+```css
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background: #f7f7ff;
+    color: #333650;
+    min-height: 100vh;
+}
+
+
+/* Header */
+.signin-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 18px 7%;
+    background: white;
+    box-shadow: 0 2px 12px rgba(30, 35, 80, 0.05);
+}
+
+.brand {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    text-decoration: none;
+}
+
+.brand img {
+    width: 52px;
+    height: 52px;
+    object-fit: contain;
+}
+
+.brand-name {
+    display: block;
+    color: #292d68;
+    font-size: 27px;
+    font-weight: bold;
+}
+
+.brand-name span {
+    color: #ed9c52;
+}
+
+.brand small {
+    color: #777b91;
+    font-size: 11px;
+}
+
+.back-link {
+    text-decoration: none;
+    color: #34377c;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.back-link:hover {
+    color: #ed9c52;
+}
+
+
+/* Main Layout */
+.signin-container {
+    width: 86%;
+    max-width: 1100px;
+    min-height: 600px;
+    margin: 45px auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    gap: 60px;
+}
+
+
+/* Welcome Panel */
+.welcome-panel {
+    padding: 20px;
+}
+
+.welcome-label {
+    display: inline-block;
+    color: #5658a5;
+    font-size: 12px;
+    font-weight: bold;
+    letter-spacing: 2px;
+    margin-bottom: 20px;
+}
+
+.welcome-panel h1 {
+    font-size: clamp(35px, 4vw, 50px);
+    line-height: 1.25;
+    color: #25285f;
+    margin-bottom: 22px;
+}
+
+.welcome-panel h1 span {
+    color: #6567b9;
+}
+
+.welcome-panel p {
+    max-width: 430px;
+    color: #777b91;
+    font-size: 16px;
+    line-height: 1.9;
+}
+
+.welcome-decoration {
+    display: flex;
+    gap: 15px;
+    margin-top: 35px;
+}
+
+.welcome-decoration span {
+    width: 58px;
+    height: 58px;
+    display: grid;
+    place-items: center;
+    background: white;
+    border-radius: 15px;
+    box-shadow: 0 5px 18px rgba(35, 40, 90, 0.07);
+    font-size: 25px;
+}
+
+
+/* Sign In Card */
+.signin-card {
+    background: white;
+    padding: 40px;
+    border-radius: 18px;
+    box-shadow: 0 12px 40px rgba(35, 40, 90, 0.08);
+    border: 1px solid #eeeef6;
+}
+
+.card-heading {
+    margin-bottom: 30px;
+}
+
+.card-heading h2 {
+    font-size: 29px;
+    color: #25285f;
+    margin-bottom: 10px;
+}
+
+.card-heading p {
+    color: #777b91;
+    font-size: 14px;
+    line-height: 1.7;
+}
+
+
+/* Form Fields */
+.form-group {
+    margin-bottom: 22px;
+}
+
+.form-group label {
+    display: block;
+    color: #383b5c;
+    font-size: 14px;
+    font-weight: bold;
+    margin-bottom: 9px;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 14px;
+    border: 1px solid #dedfee;
+    border-radius: 9px;
+    background: #fcfcff;
+    outline: none;
+    font-size: 14px;
+    color: #333650;
+}
+
+.form-group input:focus {
+    border-color: #5658a5;
+    box-shadow: 0 0 0 3px rgba(86, 88, 165, 0.1);
+}
+
+
+/* Password Field */
+.password-box {
+    display: flex;
+    align-items: center;
+    border: 1px solid #dedfee;
+    border-radius: 9px;
+    background: #fcfcff;
+}
+
+.password-box:focus-within {
+    border-color: #5658a5;
+    box-shadow: 0 0 0 3px rgba(86, 88, 165, 0.1);
+}
+
+.password-box input {
+    border: none;
+    background: transparent;
+    box-shadow: none;
+}
+
+.password-box input:focus {
+    box-shadow: none;
+}
+
+.show-password {
+    border: none;
+    background: transparent;
+    color: #5658a5;
+    font-weight: bold;
+    cursor: pointer;
+    padding: 10px 14px;
+}
+
+
+/* Remember Me and Forgot Password */
+.form-options {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+    margin: 5px 0 25px;
+    font-size: 12px;
+}
+
+.remember-option {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    color: #60647a;
+}
+
+.form-options a {
+    color: #5658a5;
+    text-decoration: none;
+}
+
+.form-options a:hover {
+    text-decoration: underline;
+}
+
+
+/* Sign In Button */
+.signin-button {
+    width: 100%;
+    border: none;
+    background: #34377c;
+    color: white;
+    padding: 15px;
+    border-radius: 9px;
+    font-size: 15px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.3s, transform 0.3s;
+}
+
+.signin-button:hover {
+    background: #25285f;
+    transform: translateY(-2px);
+}
+
+
+/* Form Messages */
+.message {
+    color: #5658a5;
+    font-size: 12px;
+    line-height: 1.6;
+    margin-top: 15px;
+}
+
+
+/* Create Account */
+.signup-prompt {
+    text-align: center;
+    margin-top: 25px;
+    font-size: 13px;
+    color: #777b91;
+}
+
+.signup-prompt a {
+    color: #5658a5;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.signup-prompt a:hover {
+    text-decoration: underline;
+}
+
+
+/* Security Note */
+.security-note {
+    margin-top: 25px;
+    padding-top: 20px;
+    border-top: 1px solid #eeeef6;
+    text-align: center;
+    color: #85889c;
+    font-size: 11px;
+}
+
+
+/* Footer */
+.signin-footer {
+    text-align: center;
+    padding: 20px;
+    color: #85889c;
+    font-size: 12px;
+}
+
+
+/* Mobile Layout */
+@media (max-width: 850px) {
+
+    .signin-container {
+        grid-template-columns: 1fr;
+        gap: 30px;
+        width: 90%;
+        margin: 30px auto;
+    }
+
+    .welcome-panel {
+        text-align: center;
+        padding: 10px;
+    }
+
+    .welcome-panel p {
+        margin: auto;
+    }
+
+    .welcome-decoration {
+        justify-content: center;
+    }
+
+    .signin-card {
+        width: 100%;
+        max-width: 500px;
+        margin: auto;
+        padding: 30px;
+    }
+}
+
+
+@media (max-width: 480px) {
+
+    .signin-header {
+        padding: 14px 5%;
+    }
+
+    .brand img {
+        width: 42px;
+        height: 42px;
+    }
+
+    .brand-name {
+        font-size: 23px;
+    }
+
+    .back-link {
+        font-size: 12px;
+    }
+
+    .welcome-panel h1 {
+        font-size: 35px;
+    }
+
+    .signin-card {
+        padding: 24px 20px;
+    }
+
+    .form-options {
+        flex-wrap: wrap;
+    }
+
+}
+```

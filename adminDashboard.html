@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Zula | Administrator Dashboard</title>
+
+    <link rel="stylesheet" href="adminDashboard.css">
+    <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+
+<body>
+
+<div class="app-layout">
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar" id="sidebar">
+
+        <div class="brand">
+            <div class="brand-mark">Z</div>
+            <div>
+                <h1>Zula</h1>
+                <p>MUST Events Platform</p>
+            </div>
+        </div>
+
+        <nav class="side-nav">
+
+            <a class="nav-link active" href="#dashboard">
+                <i data-lucide="layout-dashboard"></i>
+                <span>Dashboard</span>
+            </a>
+
+            <a class="nav-link" href="#events">
+                <i data-lucide="calendar-days"></i>
+                <span>Events</span>
+            </a>
+
+            <a class="nav-link" href="#managerRequests">
+                <i data-lucide="user-check"></i>
+                <span>Event Manager Requests</span>
+            </a>
+
+            <a class="nav-link" href="#users">
+                <i data-lucide="users"></i>
+                <span>Users</span>
+            </a>
+
+            <a class="nav-link" href="#categories">
+                <i data-lucide="chart-pie"></i>
+                <span>Event Categories</span>
+            </a>
+
+        </nav>
+
+        <a class="logout-link" href="signin.html" id="logoutBtn">
+            <i data-lucide="log-out"></i>
+            <span>Log Out</span>
+        </a>
+
+    </aside>
+
+
+    <!-- MAIN CONTENT -->
+    <main class="main-content" id="dashboard">
+
+        <header class="topbar">
+
+            <button class="menu-button" id="menuButton">
+                <i data-lucide="menu"></i>
+            </button>
+
+            <div class="topbar-spacer"></div>
+
+            <div class="admin-profile">
+                <div class="avatar">A</div>
+
+                <div>
+                    <strong id="adminName">Admin</strong>
+                    <small>Administrator</small>
+                </div>
+
+                <i data-lucide="chevron-down"></i>
+            </div>
+
+        </header>
+
+
+        <!-- PAGE HEADING -->
+        <section class="page-heading">
+
+            <div>
+                <p class="eyebrow">ZULA ADMINISTRATION</p>
+
+                <h2>Administrator Dashboard</h2>
+
+                <p class="subtitle">
+                    Manage events, users and event manager applications.
+                </p>
+            </div>
+
+            <button class="primary-button" id="createEventTop">
+                <i data-lucide="plus"></i>
+                Create New Event
+            </button>
+
+        </section>
+
+
+        <!-- STATISTICS -->
+        <section class="stats-grid">
+
+            <article class="stat-card purple">
+                <div class="stat-icon">
+                    <i data-lucide="calendar-days"></i>
+                </div>
+
+                <div class="stat-copy">
+                    <p>Total Events</p>
+                    <h3 id="totalEvents">0</h3>
+                    <small>All events in the system</small>
+                </div>
+
+                <span class="stat-arrow">→</span>
+            </article>
+
+
+            <article class="stat-card amber">
+                <div class="stat-icon">
+                    <i data-lucide="clock-3"></i>
+                </div>
+
+                <div class="stat-copy">
+                    <p>Pending Events</p>
+                    <h3 id="pendingEvents">0</h3>
+                    <small>Awaiting approval</small>
+                </div>
+
+                <span class="stat-arrow">→</span>
+            </article>
+
+
+            <article class="stat-card green">
+                <div class="stat-icon">
+                    <i data-lucide="check-circle-2"></i>
+                </div>
+
+                <div class="stat-copy">
+                    <p>Published Events</p>
+                    <h3 id="publishedEvents">0</h3>
+                    <small>Visible to students</small>
+                </div>
+
+                <span class="stat-arrow">→</span>
+            </article>
+
+
+            <article class="stat-card blue">
+                <div class="stat-icon">
+                    <i data-lucide="users"></i>
+                </div>
+
+                <div class="stat-copy">
+                    <p>Registered Users</p>
+                    <h3 id="registeredUsers">0</h3>
+                    <small>Students and organizers</small>
+                </div>
+
+                <span class="stat-arrow">→</span>
+            </article>
+
+        </section>
+
+
+        <div class="content-grid">
+
+
+            <!-- RECENT EVENTS -->
+            <section class="panel recent-panel" id="events">
+
+                <div class="panel-heading">
+
+                    <div class="panel-title">
+                        <i data-lucide="calendar-days"></i>
+                        <h3>Recent Events</h3>
+                    </div>
+
+                    <button class="text-link" id="refreshEvents">
+                        Refresh ↻
+                    </button>
+
+                </div>
+
+                <div class="table-wrap">
+
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Title</th>
+                                <th>Category</th>
+                                <th>Date</th>
+                                <th>Status</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+
+                        <tbody id="eventTableBody">
+                            <tr>
+                                <td colspan="5">Loading events...</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                </div>
+
+                <p id="eventMessage" class="demo-note"></p>
+
+            </section>
+
+
+            <!-- EVENT MANAGER REQUESTS -->
+            <section class="panel" id="managerRequests">
+
+                <div class="panel-heading">
+
+                    <div class="panel-title">
+                        <i data-lucide="user-check"></i>
+                        <h3>Event Manager Requests</h3>
+                    </div>
+
+                    <button class="text-link" id="refreshRequests">
+                        Refresh ↻
+                    </button>
+
+                </div>
+
+                <div class="table-wrap">
+
+                    <table>
+
+                        <thead>
+                            <tr>
+                                <th>Applicant</th>
+                                <th>Email</th>
+                                <th>Request Date</th>
+                                <th>Status</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+
+                        <tbody id="managerRequestTableBody">
+                            <tr>
+                                <td colspan="5">Loading requests...</td>
+                            </tr>
+                        </tbody>
+
+                    </table>
+
+                </div>
+
+            </section>
+
+
+            <!-- QUICK ACTIONS -->
+            <section class="panel quick-panel">
+
+                <div class="panel-heading">
+
+                    <div class="panel-title">
+                        <i data-lucide="zap"></i>
+                        <h3>Quick Actions</h3>
+                    </div>
+
+                </div>
+
+                <button class="quick-action main-action" id="createEventBtn">
+                    <i data-lucide="plus"></i>
+                    Create New Event
+                </button>
+
+                <button class="quick-action" id="manageUsersBtn">
+                    <i data-lucide="users"></i>
+                    Manage Users
+                </button>
+
+            </section>
+
+
+            <!-- CATEGORY CHART -->
+            <section class="panel chart-panel" id="categories">
+
+                <div class="panel-heading">
+
+                    <div class="panel-title">
+                        <i data-lucide="chart-pie"></i>
+                        <h3>Events by Category</h3>
+                    </div>
+
+                </div>
+
+                <div class="category-chart-content">
+
+                    <div class="donut-chart">
+                        <div>
+                            <strong id="categoryTotal">0</strong>
+                            <span>Total Events</span>
+                        </div>
+                    </div>
+
+                    <ul class="legend" id="categoryLegend"></ul>
+
+                </div>
+
+            </section>
+
+
+            <!-- EVENT STATUS -->
+            <section class="panel status-panel">
+
+                <div class="panel-heading">
+
+                    <div class="panel-title">
+                        <i data-lucide="chart-column"></i>
+                        <h3>Event Status</h3>
+                    </div>
+
+                </div>
+
+                <div id="statusSummary">
+                    <p>Loading event statistics...</p>
+                </div>
+
+            </section>
+
+
+            <!-- USERS -->
+            <section class="panel" id="users">
+
+                <div class="panel-heading">
+
+                    <div class="panel-title">
+                        <i data-lucide="users"></i>
+                        <h3>User Management</h3>
+                    </div>
+
+                </div>
+
+                <p>
+                    Total registered users:
+                    <strong id="usersTotal">0</strong>
+                </p>
+
+                <p>
+                    Students:
+                    <strong id="studentsTotal">0</strong>
+                </p>
+
+                <p>
+                    Event Managers:
+                    <strong id="managersTotal">0</strong>
+                </p>
+
+                <p>
+                    Administrators:
+                    <strong id="adminsTotal">0</strong>
+                </p>
+
+            </section>
+
+        </div>
+
+
+        <footer class="footer">
+            © 2026 Zula · MUST Events Platform
+            <span>Administrator workspace</span>
+        </footer>
+
+    </main>
+
+</div>
+
+
+<!-- EVENT DIALOG -->
+<dialog id="eventDialog" class="modal">
+
+    <form id="eventForm">
+
+        <div class="modal-heading">
+
+            <div>
+                <p class="eyebrow">EVENT MANAGEMENT</p>
+                <h3 id="eventDialogTitle">Create New Event</h3>
+            </div>
+
+            <button type="button" class="close-button" id="closeEventDialog">
+                ×
+            </button>
+
+        </div>
+
+        <label>
+            Event title
+            <input id="eventTitle" required maxlength="100">
+        </label>
+
+        <label>
+            Description
+            <textarea id="eventDescription" required rows="3"></textarea>
+        </label>
+
+        <label>
+            Category
+
+            <select id="eventCategory" required>
+                <option value="Association Events">Association Events</option>
+                <option value="University Administration Events">
+                    University Administration Events
+                </option>
+                <option value="Games & Sports">Games & Sports</option>
+                <option value="Academic Events">Academic Events</option>
+                <option value="CITT Events">CITT Events</option>
+                <option value="Other University Events">
+                    Other University Events
+                </option>
+            </select>
+        </label>
+
+        <label>
+            Event date
+            <input id="eventDate" type="date" required>
+        </label>
+
+        <label>
+            Start time
+            <input id="eventStart" type="time" required>
+        </label>
+
+        <label>
+            End time
+            <input id="eventEnd" type="time" required>
+        </label>
+
+        <label>
+            Venue
+            <input id="eventVenue" required>
+        </label>
+
+        <label>
+            Status
+
+            <select id="eventStatus">
+                <option value="pending">Pending</option>
+                <option value="published">Published</option>
+                <option value="rejected">Rejected</option>
+                <option value="cancelled">Cancelled</option>
+            </select>
+        </label>
+
+        <div class="modal-actions">
+
+            <button type="button" class="secondary-button" id="cancelEventDialog">
+                Cancel
+            </button>
+
+            <button type="submit" class="primary-button" id="saveEventButton">
+                Save Event
+            </button>
+
+        </div>
+
+    </form>
+
+</dialog>
+
+
+<!-- MESSAGE DIALOG -->
+<dialog id="messageDialog" class="modal">
+
+    <form method="dialog">
+
+        <div class="modal-heading">
+
+            <div>
+                <p class="eyebrow">ZULA ADMINISTRATION</p>
+                <h3 id="messageTitle">Notice</h3>
+            </div>
+
+            <button type="button" class="close-button" id="closeMessageDialog">
+                ×
+            </button>
+
+        </div>
+
+        <p id="messageText" class="message-text"></p>
+
+        <div class="modal-actions">
+            <button type="submit" class="primary-button">
+                Close
+            </button>
+        </div>
+
+    </form>
+
+</dialog>
+
+
+<script type="module" src="adminDashboard.js"></script>
+
+<script>
+    lucide.createIcons();
+</script>
+
+</body>
+</html>

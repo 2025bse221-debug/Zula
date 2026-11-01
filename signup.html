@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Create Account | Zula</title>
+
+    <link rel="stylesheet" href="signup.css">
+</head>
+
+<body>
+
+    <!-- Header -->
+    <header class="header">
+
+        <a href="index.html" class="brand">
+
+            <img src="images/campus_logo.png" alt="MUST Logo">
+
+            <div>
+                <h2>Zula<span>.</span></h2>
+                <p>MUST Events Platform</p>
+            </div>
+
+        </a>
+
+        <a href="signin.html" class="back-link">Sign In</a>
+
+    </header>
+
+
+    <!-- Registration Section -->
+    <main class="registration-container">
+
+        <section class="registration-card">
+
+            <div class="heading">
+                <span class="small-title">JOIN THE MUST COMMUNITY</span>
+
+                <h1>Create Your Account</h1>
+
+                <p>
+                    Join Zula to discover events and connect with
+                    the university community.
+                </p>
+            </div>
+
+
+            <!-- Account Type -->
+            <form id="signupForm">
+
+                <div class="form-group">
+
+                    <label for="role">I want to register as</label>
+
+                    <select id="role" name="role" required>
+
+                        <option value="student">Student</option>
+
+                        <option value="manager">Event Manager</option>
+
+                    </select>
+
+                </div>
+
+
+                <!-- Full Name -->
+                <div class="form-group">
+
+                    <label for="fullname">Full Name</label>
+
+                    <input
+                        type="text"
+                        id="fullname"
+                        name="fullname"
+                        placeholder="Enter your full name"
+                        required
+                    >
+
+                </div>
+
+
+                <!-- Email -->
+                <div class="form-group">
+
+                    <label for="email">Email Address</label>
+
+                    <input
+                        type="email"
+                        id="email"
+                        name="email"
+                        placeholder="Enter your email address"
+                        required
+                    >
+
+                </div>
+
+
+                <!-- Student Number -->
+                <div class="form-group" id="studentGroup">
+
+                    <label for="studentNumber">Student Number</label>
+
+                    <input
+                        type="text"
+                        id="studentNumber"
+                        name="studentNumber"
+                        placeholder="Enter your student number"
+                    >
+
+                </div>
+
+
+                <!-- Event Manager Details -->
+                <div class="form-group hidden" id="managerGroup">
+
+                    <label for="association">Association or Organization</label>
+
+                    <input
+                        type="text"
+                        id="association"
+                        name="association"
+                        placeholder="Enter your association name"
+                    >
+
+                    <p class="field-note">
+                        Event Manager accounts require administrator approval.
+                    </p>
+
+                </div>
+
+
+                <!-- Password -->
+                <div class="form-group">
+
+                    <label for="password">Password</label>
+
+                    <input
+                        type="password"
+                        id="password"
+                        name="password"
+                        placeholder="Create a password"
+                        minlength="8"
+                        required
+                    >
+
+                    <small>Use at least 8 characters.</small>
+
+                </div>
+
+
+                <!-- Confirm Password -->
+                <div class="form-group">
+
+                    <label for="confirmPassword">Confirm Password</label>
+
+                    <input
+                        type="password"
+                        id="confirmPassword"
+                        name="confirmPassword"
+                        placeholder="Enter your password again"
+                        minlength="8"
+                        required
+                    >
+
+                </div>
+
+
+                <!-- Terms -->
+                <div class="terms">
+
+                    <input type="checkbox" id="terms" required>
+
+                    <label for="terms">
+                        I agree to use Zula responsibly and provide
+                        accurate registration information.
+                    </label>
+
+                </div>
+
+
+                <!-- Submit -->
+                <button type="submit" class="create-button">
+                    Create Account
+                </button>
+
+
+                <!-- Feedback Message -->
+                <p id="message" class="message" aria-live="polite"></p>
+
+
+                <div class="signin-prompt">
+
+                    Already have an account?
+
+                    <a href="signin.html">Sign in</a>
+
+                </div>
+
+            </form>
+
+        </section>
+
+    </main>
+
+
+    <!-- Footer -->
+    <footer class="footer">
+
+        <p>© 2026 Zula | MUST Events Platform</p>
+
+    </footer>
+
+    <script type="module" src="signup.js"></script>
+
+</body>
+
+</html>

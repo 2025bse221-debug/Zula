@@ -1,0 +1,580 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Zula | Event Manager Dashboard</title>
+
+    <link rel="stylesheet" href="eventManagerDashboard.css">
+
+    <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+
+<body>
+
+    <!-- =====================================
+         SIDEBAR
+    ====================================== -->
+
+    <aside class="sidebar" id="sidebar">
+
+        <a class="brand" href="index.html">
+
+            <span class="brand-mark">Z</span>
+
+            <span>
+                <strong>Zula</strong>
+                <small>MUST Events Platform</small>
+            </span>
+
+        </a>
+
+        <div class="role-label">EVENT MANAGER</div>
+
+        <nav class="side-nav">
+
+            <a class="nav-link active" href="#dashboard">
+                <i data-lucide="layout-dashboard"></i>
+                Dashboard
+            </a>
+
+            <a class="nav-link" href="#my-events">
+                <i data-lucide="calendar-days"></i>
+                My Events
+            </a>
+
+            <a class="nav-link" href="#event-form-section">
+                <i data-lucide="circle-plus"></i>
+                Create Event
+            </a>
+
+            <a class="nav-link" href="#help">
+                <i data-lucide="circle-help"></i>
+                Help
+            </a>
+
+        </nav>
+
+        <a class="logout-link" href="signin.html">
+            <i data-lucide="log-out"></i>
+            Log Out
+        </a>
+
+    </aside>
+
+
+    <!-- =====================================
+         MAIN CONTENT
+    ====================================== -->
+
+    <main class="main-content" id="dashboard">
+
+
+        <!-- TOP BAR -->
+
+        <header class="topbar">
+
+            <button class="menu-button" id="menuButton" aria-label="Open menu">
+                <i data-lucide="menu"></i>
+            </button>
+
+            <div class="topbar-spacer"></div>
+
+            <div class="profile">
+
+                <div class="avatar">EM</div>
+
+                <div>
+                    <strong>Event Manager</strong>
+                    <small>Event management</small>
+                </div>
+
+            </div>
+
+        </header>
+
+
+        <!-- =====================================
+             PAGE HEADING
+        ====================================== -->
+
+        <section class="page-heading">
+
+            <div>
+
+                <p class="eyebrow">ZULA EVENT MANAGEMENT</p>
+
+                <h1>Event Manager Dashboard</h1>
+
+                <p class="subtitle">
+                    Create events, share event pictures, and keep students informed.
+                </p>
+
+            </div>
+
+            <button class="primary-button" id="newEventButton">
+
+                <i data-lucide="plus"></i>
+
+                Create New Event
+
+            </button>
+
+        </section>
+
+
+        <!-- =====================================
+             STATISTICS
+        ====================================== -->
+
+        <section class="stats-grid">
+
+            <article class="stat-card purple">
+
+                <span class="stat-icon">
+                    <i data-lucide="calendar-days"></i>
+                </span>
+
+                <div>
+                    <p>My Events</p>
+                    <h2 id="totalCount">0</h2>
+                    <small>Events you've added</small>
+                </div>
+
+            </article>
+
+
+            <article class="stat-card green">
+
+                <span class="stat-icon">
+                    <i data-lucide="check-circle-2"></i>
+                </span>
+
+                <div>
+                    <p>Published</p>
+                    <h2 id="publishedCount">0</h2>
+                    <small>Visible on the events page</small>
+                </div>
+
+            </article>
+
+
+            <article class="stat-card amber">
+
+                <span class="stat-icon">
+                    <i data-lucide="clock-3"></i>
+                </span>
+
+                <div>
+                    <p>Pending Approval</p>
+                    <h2 id="pendingCount">0</h2>
+                    <small>Waiting for administrator</small>
+                </div>
+
+            </article>
+
+
+            <article class="stat-card blue">
+
+                <span class="stat-icon">
+                    <i data-lucide="image"></i>
+                </span>
+
+                <div>
+                    <p>With Event Pictures</p>
+                    <h2 id="pictureCount">0</h2>
+                    <small>Events with a poster or photo</small>
+                </div>
+
+            </article>
+
+        </section>
+
+
+        <!-- =====================================
+             CREATE EVENT FORM
+        ====================================== -->
+
+        <section class="panel form-panel" id="event-form-section">
+
+            <div class="panel-heading">
+
+                <div>
+
+                    <p class="eyebrow">EVENT DETAILS</p>
+
+                    <h2 id="formHeading">Create an Event</h2>
+
+                    <p class="section-subtitle">
+                        Add the information students need to know.
+                    </p>
+
+                </div>
+
+                <button class="secondary-button hidden"
+                    id="cancelEditButton"
+                    type="button">
+
+                    Cancel editing
+
+                </button>
+
+            </div>
+
+
+            <form id="eventForm">
+
+                <div class="form-grid">
+
+
+                    <!-- EVENT TITLE -->
+
+                    <label class="full-width">
+
+                        Event title <span class="required">*</span>
+
+                        <input
+                            id="eventTitle"
+                            name="title"
+                            maxlength="120"
+                            required
+                            placeholder="e.g. Inter-Faculty Football Tournament"
+                        >
+
+                    </label>
+
+
+                    <!-- EVENT CATEGORY -->
+
+                    <label>
+
+                        Event category <span class="required">*</span>
+
+                        <select id="eventCategory" name="category" required>
+
+                            <option value="">Choose a category</option>
+
+                            <option value="Association">
+                                Association Events
+                            </option>
+
+                            <option value="Administration">
+                                University Administration Events
+                            </option>
+
+                            <option value="Sports">
+                                Games &amp; Sports
+                            </option>
+
+                            <option value="Academic">
+                                Academic Events
+                            </option>
+
+                            <option value="CITT">
+                                CITT Events
+                            </option>
+
+                            <option value="Other">
+                                Other University Events
+                            </option>
+
+                        </select>
+
+                    </label>
+
+
+                    <!-- EVENT DATE -->
+
+                    <label>
+
+                        Event date <span class="required">*</span>
+
+                        <input
+                            id="eventDate"
+                            name="date"
+                            type="date"
+                            required
+                        >
+
+                    </label>
+
+
+                    <!-- START TIME -->
+
+                    <label>
+
+                        Start time
+
+                        <input
+                            id="eventStart"
+                            name="startTime"
+                            type="time"
+                        >
+
+                    </label>
+
+
+                    <!-- END TIME -->
+
+                    <label>
+
+                        End time
+
+                        <input
+                            id="eventEnd"
+                            name="endTime"
+                            type="time"
+                        >
+
+                    </label>
+
+
+                    <!-- VENUE -->
+
+                    <label class="full-width">
+
+                        Venue <span class="required">*</span>
+
+                        <input
+                            id="eventVenue"
+                            name="venue"
+                            required
+                            maxlength="150"
+                            placeholder="e.g. Main University Grounds"
+                        >
+
+                    </label>
+
+
+                    <!-- EVENT DESCRIPTION -->
+
+                    <label class="full-width">
+
+                        Event description <span class="required">*</span>
+
+                        <textarea
+                            id="eventDescription"
+                            name="description"
+                            rows="4"
+                            required
+                            maxlength="2000"
+                            placeholder="Describe the event, who can attend, and any important details..."
+                        ></textarea>
+
+                    </label>
+
+
+                    <!-- =====================================
+                         OPTIONAL REGISTRATION LINK
+                    ====================================== -->
+
+                    <label class="full-width">
+
+                        <span>
+                            Event Registration Link
+                            <span class="optional-label">(Optional)</span>
+                        </span>
+
+                        <input
+                            id="registrationUrl"
+                            name="registrationUrl"
+                            type="url"
+                            placeholder="https://example.com/register"
+                        >
+
+                        <small class="field-help">
+                            If students need to register online, paste the registration
+                            link here. Leave this field empty if registration is not
+                            required.
+                        </small>
+
+                    </label>
+
+
+                    <!-- EVENT POSTER -->
+
+                    <label class="full-width">
+
+                        Event poster or picture
+
+                        <input
+                            id="eventImage"
+                            name="image"
+                            type="file"
+                            accept="image/*"
+                        >
+
+                        <small class="field-help">
+                            Choose an image file. For this prototype, use a small image
+                            (around 1–2 MB or less).
+                        </small>
+
+                    </label>
+
+
+                </div>
+
+
+                <!-- IMAGE PREVIEW -->
+
+                <div class="image-preview-wrap hidden" id="imagePreviewWrap">
+
+                    <img id="imagePreview" alt="Event poster preview">
+
+                    <div>
+
+                        <strong>Picture preview</strong>
+
+                        <p>Your selected picture will be shown with the event.</p>
+
+                        <button
+                            class="text-button"
+                            type="button"
+                            id="removeImageButton"
+                        >
+                            Remove picture
+                        </button>
+
+                    </div>
+
+                </div>
+
+
+                <!-- FORM BOTTOM -->
+
+                <div class="form-bottom">
+
+                    <p class="form-note">
+
+                        <i data-lucide="info"></i>
+
+                        New events are submitted as
+                        <strong>Pending</strong>
+                        until an administrator approves them.
+
+                    </p>
+
+                    <button
+                        class="primary-button"
+                        type="submit"
+                        id="saveEventButton"
+                    >
+
+                        <i data-lucide="send"></i>
+
+                        Submit Event
+
+                    </button>
+
+                </div>
+
+            </form>
+
+        </section>
+
+
+        <!-- =====================================
+             MY EVENTS
+        ====================================== -->
+
+        <section class="panel events-panel" id="my-events">
+
+            <div class="panel-heading events-heading">
+
+                <div>
+
+                    <p class="eyebrow">YOUR SUBMISSIONS</p>
+
+                    <h2>My Events</h2>
+
+                    <p class="section-subtitle">
+                        Edit event details or remove events you manage.
+                    </p>
+
+                </div>
+
+                <div class="search-box">
+
+                    <i data-lucide="search"></i>
+
+                    <input
+                        id="searchEvents"
+                        type="search"
+                        placeholder="Search my events..."
+                    >
+
+                </div>
+
+            </div>
+
+
+            <div id="eventsList" class="events-list"></div>
+
+
+            <div id="emptyState" class="empty-state hidden">
+
+                <i data-lucide="calendar-x"></i>
+
+                <h3>No events yet</h3>
+
+                <p>Create your first event using the form above.</p>
+
+            </div>
+
+
+            <p class="demo-warning">
+
+                <i data-lucide="info"></i>
+
+                Prototype note: this version saves data in this browser only.
+                We'll connect it to Supabase so authorized managers and students
+                can see the same events online.
+
+            </p>
+
+        </section>
+
+
+        <!-- =====================================
+             HELP
+        ====================================== -->
+
+        <section class="help-strip" id="help">
+
+            <i data-lucide="shield-check"></i>
+
+            <p>
+
+                <strong>How publishing works:</strong>
+
+                Submit an event for administrator approval.
+                Only published events should appear on the student events page.
+
+            </p>
+
+        </section>
+
+
+        <!-- FOOTER -->
+
+        <footer>
+            © 2026 Zula · MUST Events Platform
+        </footer>
+
+
+    </main>
+
+
+    <!-- JAVASCRIPT -->
+
+    <script type="module" src="eventManagerDashboard.js"></script>
+
+    <script>
+        lucide.createIcons();
+    </script>
+
+</body>
+
+</html>

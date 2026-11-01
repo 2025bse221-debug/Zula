@@ -1,0 +1,273 @@
+/* General Styling */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background: #f7f7ff;
+    color: #333650;
+    min-height: 100vh;
+}
+
+
+/* Header */
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 16px 7%;
+    background: white;
+    box-shadow: 0 2px 12px rgba(30, 35, 80, 0.05);
+}
+
+.brand {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    text-decoration: none;
+}
+
+.brand img {
+    width: 50px;
+    height: 50px;
+    object-fit: contain;
+}
+
+.brand h2 {
+    font-size: 27px;
+    color: #292d68;
+}
+
+.brand h2 span {
+    color: #ed9c52;
+}
+
+.brand p {
+    color: #777b91;
+    font-size: 11px;
+}
+
+.back-link {
+    text-decoration: none;
+    color: #34377c;
+    font-weight: bold;
+    font-size: 14px;
+}
+
+.back-link:hover {
+    color: #ed9c52;
+}
+
+
+/* Registration Layout */
+.registration-container {
+    padding: 45px 20px;
+    display: flex;
+    justify-content: center;
+}
+
+.registration-card {
+    width: 100%;
+    max-width: 560px;
+    background: white;
+    padding: 40px;
+    border-radius: 18px;
+    border: 1px solid #eeeef6;
+    box-shadow: 0 12px 40px rgba(35, 40, 90, 0.07);
+}
+
+
+/* Heading */
+.heading {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.small-title {
+    color: #6567b9;
+    font-size: 11px;
+    font-weight: bold;
+    letter-spacing: 1.8px;
+}
+
+.heading h1 {
+    color: #25285f;
+    font-size: 30px;
+    margin: 12px 0;
+}
+
+.heading p {
+    color: #777b91;
+    font-size: 14px;
+    line-height: 1.7;
+}
+
+
+/* Form Fields */
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-size: 14px;
+    font-weight: bold;
+    color: #383b5c;
+}
+
+.form-group input,
+.form-group select {
+    width: 100%;
+    padding: 13px;
+    border: 1px solid #dedfee;
+    border-radius: 9px;
+    background: #fcfcff;
+    color: #333650;
+    font-size: 14px;
+    outline: none;
+}
+
+.form-group input:focus,
+.form-group select:focus {
+    border-color: #5658a5;
+    box-shadow: 0 0 0 3px rgba(86, 88, 165, 0.1);
+}
+
+.form-group small {
+    display: block;
+    margin-top: 6px;
+    font-size: 11px;
+    color: #85889c;
+}
+
+.field-note {
+    margin-top: 8px;
+    font-size: 12px;
+    line-height: 1.5;
+    color: #777b91;
+}
+
+
+/* Hidden Fields */
+.hidden {
+    display: none;
+}
+
+
+/* Terms */
+.terms {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    margin: 22px 0;
+}
+
+.terms input {
+    margin-top: 4px;
+    accent-color: #34377c;
+}
+
+.terms label {
+    color: #777b91;
+    font-size: 12px;
+    line-height: 1.6;
+}
+
+
+/* Create Account Button */
+.create-button {
+    width: 100%;
+    padding: 15px;
+    border: none;
+    border-radius: 9px;
+    background: #34377c;
+    color: white;
+    font-size: 15px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.3s, transform 0.3s;
+}
+
+.create-button:hover {
+    background: #25285f;
+    transform: translateY(-2px);
+}
+
+
+/* Feedback Messages */
+.message {
+    margin-top: 15px;
+    font-size: 13px;
+    line-height: 1.6;
+}
+
+.success {
+    color: #267447;
+}
+
+.error {
+    color: #c0392b;
+}
+
+
+/* Sign In Link */
+.signin-prompt {
+    margin-top: 25px;
+    text-align: center;
+    font-size: 13px;
+    color: #777b91;
+}
+
+.signin-prompt a {
+    color: #5658a5;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.signin-prompt a:hover {
+    text-decoration: underline;
+}
+
+
+/* Footer */
+.footer {
+    text-align: center;
+    padding: 20px;
+    color: #85889c;
+    font-size: 12px;
+}
+
+
+/* Mobile Screens */
+@media (max-width: 600px) {
+
+    .header {
+        padding: 14px 5%;
+    }
+
+    .brand img {
+        width: 42px;
+        height: 42px;
+    }
+
+    .brand h2 {
+        font-size: 23px;
+    }
+
+    .registration-container {
+        padding: 25px 15px;
+    }
+
+    .registration-card {
+        padding: 28px 22px;
+    }
+
+    .heading h1 {
+        font-size: 26px;
+    }
+
+}

@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Zula | University Events</title>
+
+    <link rel="stylesheet" href="events.css">
+</head>
+
+<body>
+
+    <!-- NAVIGATION BAR -->
+    <header class="navbar">
+
+        <a href="studentDashboard.html" class="logo">
+
+            <img src="images/campus_logo.png" alt="MUST Logo">
+
+            <span>Zula</span>
+
+        </a>
+
+        <nav>
+
+            <a href="index.html">Home</a>
+
+            <a href="studentDashboard.html">Dashboard</a>
+
+            <a href="#event-list">Events</a>
+
+        </nav>
+
+        <a href="signin.html" class="signout">Sign Out</a>
+
+    </header>
+
+
+    <!-- CATEGORY INTRODUCTION -->
+    <section class="hero">
+
+        <a href="studentDashboard.html" class="back-link">
+            &larr; Back to Dashboard
+        </a>
+
+        <div class="hero-content">
+
+            <div class="hero-text">
+
+                <p class="small-heading">
+                    DISCOVER MUST ACTIVITIES
+                </p>
+
+                <h1 id="categoryTitle">
+                    All University Events
+                </h1>
+
+                <p id="categoryDescription">
+                    Discover activities and events happening at MUST.
+                </p>
+
+            </div>
+
+
+            <!-- SELECTED CATEGORY IMAGE -->
+            <div class="hero-image">
+
+                <img
+                    id="categoryImage"
+                    src="images/categories/events-hero.jpg"
+                    alt="University activities">
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- EVENT SEARCH -->
+    <section class="search-section">
+
+        <div>
+
+            <h2 id="eventsHeading">
+                Available Events
+            </h2>
+
+            <p id="searchDescription">
+                Search for events within the selected category.
+            </p>
+
+        </div>
+
+        <input
+            type="search"
+            id="searchInput"
+            placeholder="Search events..."
+            aria-label="Search events">
+
+    </section>
+
+
+    <!-- EVENTS DISPLAYED FROM SUPABASE -->
+    <section class="events-section" id="event-list">
+
+        <div class="events-grid" id="eventsGrid">
+
+            <p class="loading-events">
+                Loading university events...
+            </p>
+
+        </div>
+
+
+        <!-- NO RESULTS MESSAGE -->
+        <div id="noResults" class="no-results" hidden>
+
+            <h3>No events found</h3>
+
+            <p id="noResultsMessage">
+                There are currently no published events in this category.
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <!-- EVENT DETAILS POPUP -->
+    <dialog id="eventDialog">
+
+        <div class="dialog-content">
+
+            <button
+                type="button"
+                class="close-button"
+                onclick="closeDetails()"
+                aria-label="Close">
+
+                &times;
+
+            </button>
+
+            <span id="detailCategory" class="event-tag"></span>
+
+            <h2 id="detailTitle"></h2>
+
+            <p id="detailDescription"></p>
+
+            <div class="details-info">
+
+                <p id="detailDate"></p>
+
+                <p id="detailTime"></p>
+
+                <p id="detailVenue"></p>
+
+                <p id="detailOrganizer"></p>
+
+            </div>
+
+            <button
+                type="button"
+                class="primary-button"
+                onclick="closeDetails()">
+
+                Close
+
+            </button>
+
+        </div>
+
+    </dialog>
+
+
+    <!-- FOOTER -->
+    <footer>
+
+        <h2>Zula</h2>
+
+        <p>
+            Connecting MUST students with university activities.
+        </p>
+
+        <p>
+            &copy; 2026 Zula | MUST Events Platform
+        </p>
+
+    </footer>
+
+
+    <!-- SUPABASE EVENTS JAVASCRIPT -->
+    <script type="module" src="events.js"></script>
+
+</body>
+
+</html>
