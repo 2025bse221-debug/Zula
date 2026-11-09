@@ -1,0 +1,341 @@
+@startuml
+title ZULA UNIVERSITY ACTIVITIES APPLICATION - ACTIVITY DIAGRAM
+
+|User|
+start
+:Open Zula application;
+
+|Zula System|
+:Display welcome page;
+
+|User|
+if (Already have an account?) then (No)
+    :Select Register;
+    :Enter full name, email and password;
+
+    |Zula System|
+    :Validate registration details;
+
+    if (Details valid?) then (Yes)
+        :Create authentication account;
+        :Create student profile;
+        :Display registration success;
+
+    else (No)
+        :Display validation error;
+
+        |User|
+        :Correct registration details;
+
+        |Zula System|
+        :Validate registration details;
+
+        if (Details valid?) then (Yes)
+            :Create authentication account;
+            :Create student profile;
+        else (No)
+            :Display registration error;
+            stop
+        endif
+    endif
+
+else (Yes)
+    :Select Login;
+endif
+
+|User|
+:Enter email and password;
+
+|Zula System|
+:Authenticate user;
+
+if (Login successful?) then (Yes)
+    :Retrieve user profile;
+    :Identify user role;
+
+else (No)
+    :Display login error;
+
+    |User|
+    :Re-enter login details;
+
+    |Zula System|
+    :Authenticate user;
+
+    if (Login successful?) then (Yes)
+        :Retrieve user profile;
+        :Identify user role;
+    else (No)
+        :Display authentication error;
+        stop
+    endif
+endif
+
+if (User role?) then (Student)
+
+    |Zula System|
+    :Display student dashboard;
+    :Load published university events;
+    :Load student notifications;
+
+    |Student|
+    :View student dashboard;
+
+    repeat
+        :Choose an activity;
+
+        if (Browse events?) then (Yes)
+            |Zula System|
+            :Display published events;
+
+            |Student|
+            :Search or filter events;
+            :Select an event;
+
+            |Zula System|
+            :Display event details;
+
+            |Student|
+            if (Register for event?) then (Yes)
+
+                |Zula System|
+                :Check event availability and registration;
+
+                if (Registration allowed?) then (Yes)
+                    :Save event registration;
+                    :Display registration confirmation;
+                    :Create notification;
+
+                else (No)
+                    :Display registration error;
+                endif
+
+            else (No)
+                if (Cancel existing registration?) then (Yes)
+                    |Zula System|
+                    :Update registration status to cancelled;
+                    :Display cancellation confirmation;
+                endif
+            endif
+
+        else (No)
+            if (View notifications?) then (Yes)
+                |Zula System|
+                :Retrieve student notifications;
+                :Display notifications;
+
+                |Student|
+                :Select notification;
+
+                |Zula System|
+                :Display notification details;
+                :Mark notification as read;
+
+            else (No)
+                if (Request event manager role?) then (Yes)
+                    |Student|
+                    :Submit event manager request;
+
+                    |Zula System|
+                    :Save request with pending status;
+                    :Notify administrator;
+                    :Display request confirmation;
+                endif
+            endif
+        endif
+
+        |Student|
+    repeat while (Continue using dashboard?) is (Yes)
+
+    :Select Logout;
+
+elseif (User role? = Event Manager)
+
+    |Zula System|
+    :Display event manager dashboard;
+    :Load manager events;
+    :Load notifications;
+
+    |Event Manager|
+    :View event manager dashboard;
+
+    repeat
+        :Choose an activity;
+
+        if (Create event?) then (Yes)
+            :Select Create Event;
+            :Enter event title;
+            :Enter event description;
+            :Select event category;
+            :Enter event date and time;
+            :Enter event venue;
+            :Upload event image;
+
+            |Zula System|
+            :Validate event information;
+
+            if (Event information valid?) then (Yes)
+                :Upload image to Cloudinary;
+                :Save image URL;
+                :Save event with pending status;
+                :Notify administrator;
+                :Display submission confirmation;
+
+            else (No)
+                :Display validation errors;
+
+                |Event Manager|
+                :Correct event information;
+            endif
+
+        else (No)
+            if (View my events?) then (Yes)
+                |Zula System|
+                :Retrieve manager's events;
+                :Display event list and statuses;
+
+                |Event Manager|
+                :Select an event;
+
+                if (Edit event details?) then (Yes)
+                    :Update event information;
+
+                    |Zula System|
+                    :Validate changes;
+                    :Save permitted event changes;
+
+                else (No)
+                    if (Delete event?) then (Yes)
+                        |Zula System|
+                        :Delete selected event;
+                    endif
+                endif
+
+            else (No)
+                if (View notifications?) then (Yes)
+                    |Zula System|
+                    :Retrieve manager notifications;
+                    :Display notifications;
+                    :Mark selected notification as read;
+                endif
+            endif
+        endif
+
+        |Event Manager|
+    repeat while (Continue using dashboard?) is (Yes)
+
+    :Select Logout;
+
+else (Admin)
+
+    |Zula System|
+    :Display administrator dashboard;
+    :Load events;
+    :Load manager requests;
+    :Load user profiles;
+    :Calculate dashboard statistics;
+
+    |Administrator|
+    :View administrator dashboard;
+
+    repeat
+        :Choose an administrative activity;
+
+        if (Manage event manager requests?) then (Yes)
+            |Zula System|
+            :Display pending manager requests;
+
+            |Administrator|
+            :Select a request;
+
+            if (Approve request?) then (Yes)
+                |Zula System|
+                :Change user role to event_manager;
+                :Update request status to approved;
+                :Record reviewer and review date;
+                :Notify applicant;
+
+            else (Reject request)
+                |Zula System|
+                :Update request status to rejected;
+                :Record reviewer and review date;
+                :Notify applicant;
+            endif
+
+        else (No)
+            if (Review submitted events?) then (Yes)
+                |Zula System|
+                :Display pending events;
+
+                |Administrator|
+                :Select submitted event;
+                :Review event information;
+
+                if (Approve event?) then (Yes)
+                    |Zula System|
+                    :Change event status to published;
+                    :Notify event manager;
+
+                else (Reject event)
+                    |Administrator|
+                    :Provide rejection decision;
+
+                    |Zula System|
+                    :Change event status to rejected;
+                    :Notify event manager;
+                endif
+
+            else (No)
+                if (Manage published events?) then (Yes)
+                    |Zula System|
+                    :Display published events;
+
+                    |Administrator|
+                    :Select event;
+
+                    if (Cancel event?) then (Yes)
+                        |Zula System|
+                        :Change event status to cancelled;
+                        :Notify registered students;
+                    endif
+
+                else (No)
+                    if (Manage users?) then (Yes)
+                        |Zula System|
+                        :Display user profiles;
+
+                        |Administrator|
+                        :Select user;
+
+                        if (Remove event manager role?) then (Yes)
+                            |Zula System|
+                            :Change user role to student;
+                            :Update user information;
+                            :Display success message;
+                        endif
+
+                    else (No)
+                        if (View notifications?) then (Yes)
+                            |Zula System|
+                            :Display administrator notifications;
+                        else (No)
+                            :View dashboard statistics;
+                        endif
+                    endif
+                endif
+            endif
+        endif
+
+        |Administrator|
+    repeat while (Continue using dashboard?) is (Yes)
+
+    :Select Logout;
+
+endif
+
+|Zula System|
+:End user session;
+:Return to login page;
+
+stop
+@enduml
