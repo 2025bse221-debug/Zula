@@ -3,256 +3,389 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Zula helps the Mbarara University of Science and Technology community discover campus events, workshops, forums and student activities.">
+    <meta name="theme-color" content="#062c30">
 
     <title>Zula | MUST Events Platform</title>
 
-    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,800&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style0.css">
 </head>
 
 <body>
 
-    <!-- Navigation Bar -->
-    <header class="navbar">
+    <!-- Icon sprite (reused below) -->
+    <svg xmlns="http://www.w3.org/2000/svg" width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+        <symbol id="i-calendar" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="16" rx="2" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M3 10h18M8 3v4M16 3v4" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></symbol>
+        <symbol id="i-pin" viewBox="0 0 24 24"><path d="M12 21s7-6.2 7-11.5A7 7 0 0 0 5 9.5C5 14.8 12 21 12 21z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><circle cx="12" cy="9.5" r="2.5" fill="none" stroke="currentColor" stroke-width="1.8"/></symbol>
+        <symbol id="i-search" viewBox="0 0 24 24"><circle cx="11" cy="11" r="6.5" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M16 16l4.5 4.5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></symbol>
+        <symbol id="i-bell" viewBox="0 0 24 24"><path d="M6 17V11a6 6 0 1 1 12 0v6l1.5 2h-15L6 17z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M10 21h4" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></symbol>
+        <symbol id="i-users" viewBox="0 0 24 24"><circle cx="9" cy="8.5" r="3.5" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M2.5 20c.6-3.6 3-5.5 6.5-5.5s5.9 1.9 6.5 5.5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><path d="M16 5.2a3.5 3.5 0 0 1 0 6.6M18 14.8c2 .7 3.2 2.4 3.5 5.2" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></symbol>
+        <symbol id="i-info" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M12 11v5M12 8v.01" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></symbol>
+        <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    </svg>
 
-        <a href="#home" class="brand">
+    <a class="skip-link" href="#main">Skip to content</a>
 
-            <!-- Save the MUST logo as must-logo.png -->
-            <img src="images/campus_logo.png"
-               alt="MUST University Logo"
-                 class="university-logo">
+    <!-- Floating navigation -->
+    <header class="navbar" id="top">
+        <div class="navbar-inner">
 
-            <div class="brand-text">
-                <span class="zula-name">Zula<span class="dot">.</span>
-                <span class="brand-subtitle">Mbarara University of Science and Technology Events Platform</span>
-            </div>
-
-        </a>
-
-        <nav>
-            <a href="#home">Home</a>
-            <a href="#events">Explore Events</a>
-            <a href="#about">About</a>
-        </nav>
-
-        <a href="signin.html" class="login-btn">Sign In</a>
-
-    </header>
-
-
-    <!-- Hero Section -->
-    <section class="hero" id="home">
-
-        <div class="hero-content">
-
-            <span class="eyebrow">MUST CAMPUS LIFE</span>
-
-            <h1>
-                Discover what's happening
-                <span>on campus.</span>
-            </h1>
-
-            <p class="intro">
-                Stay connected with university events, student activities,
-                workshops, conferences and exciting opportunities at
-                Mbarara University of Science and Technology.
-            </p>
-
-            <a href="#events" class="explore-btn">
-                Explore Events →
+            <a href="#home" class="brand" aria-label="Zula home">
+                <img src="images/must-logo.svg"
+                     alt="Mbarara University of Science and Technology crest"
+                     class="university-logo"
+                     width="48" height="48">
+                <span class="zula-name">Zula<span class="dot">.</span></span>
             </a>
 
-            <div class="hero-note">
-                <span class="note-dot"></span>
-                Your campus. Your community. Your events.
-            </div>
+            <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav" aria-label="Toggle menu">
+                <span></span><span></span>
+            </button>
+
+            <nav id="site-nav" class="site-nav" aria-label="Main">
+                <a href="#home">Home</a>
+                <a href="#events">Explore events</a>
+                <a href="#about">About</a>
+                <a href="signin.html" class="login-btn">Sign in</a>
+                <a href="signup.html" class="signup-btn">Sign up</a>
+            </nav>
 
         </div>
+    </header>
 
-        <div class="hero-decoration">
-            <div class="decoration-circle circle-one"></div>
-            <div class="decoration-circle circle-two"></div>
+    <main id="main">
 
-            <div class="floating-card">
-                <span class="floating-icon">📅</span>
+        <!-- Hero -->
+        <section class="hero" id="home">
+            <div class="hero-inner">
 
-                <div>
-                    <h3>Campus Events</h3>
-                    <p>Discover something new</p>
+                <div class="hero-content">
+
+                    <p class="hero-kicker">Mbarara University of Science and Technology</p>
+
+                    <h1>Discover what’s happening on campus.</h1>
+
+                    <p class="intro">
+                        Stay connected with university events, student activities,
+                        workshops, conferences and opportunities at MUST.
+                    </p>
+
+                    <div class="hero-actions">
+                        <a href="#events" class="explore-btn">Explore events</a>
+                        <a href="signin.html" class="ghost-btn">Sign in</a>
+                        <p class="hero-signup">
+                            New student ?
+                            <a href="signup.html">Create your account</a>
+                        </p>
+                    </div>
+
                 </div>
+
+                <div class="hero-mosaic">
+
+                    <figure class="tile tile-a">
+                        <img src="images/images12.jpg"
+                             alt="A graduating student in a cap and gown, smiling outdoors"
+                             width="800" height="1000"
+                             fetchpriority="high">
+                    </figure>
+
+                    <figure class="tile tile-b">
+                        <img src="images/images10.jpg"
+                             alt="Students laughing together over a laptop in a lecture hall"
+                             width="600" height="600">
+                    </figure>
+
+                    <figure class="tile tile-c">
+                        <img src="images/images11.jpg"
+                             alt="A student coding on a laptop at a university hackathon"
+                             width="600" height="600">
+                    </figure>
+
+                    <p class="sticker">Your campus. Your community. Your events.</p>
+
+                </div>
+
             </div>
-        </div>
-
-    </section>
+        </section>
 
 
-    <!-- Events Section -->
-    <section class="events" id="events">
+        <!-- Events -->
+        <section class="events" id="events">
+            <div class="container">
 
-        <div class="section-heading">
+                <div class="section-heading">
+                    <h2>Explore campus events</h2>
+                    <p>
+                        Find activities, connect with students and get involved
+                        in campus life.
+                    </p>
+                </div>
 
-            <div>
-                <span class="eyebrow">WHAT'S HAPPENING</span>
-                <h2>Explore Campus Events</h2>
+                <div class="toolbar">
 
-                <p>
-                    Find activities, connect with students and get involved
-                    in campus life.
+                    <div class="filters" role="group" aria-label="Filter events by category">
+                        <button type="button" class="filter is-active" data-filter="all" aria-pressed="true">All</button>
+                        <button type="button" class="filter" data-filter="academic" aria-pressed="false">Academic</button>
+                        <button type="button" class="filter" data-filter="community" aria-pressed="false">Community</button>
+                        <button type="button" class="filter" data-filter="innovation" aria-pressed="false">Innovation</button>
+                    </div>
+
+                    <label class="search">
+                        <svg class="icon" aria-hidden="true"><use href="#i-search"/></svg>
+                        <span class="visually-hidden">Search events</span>
+                        <input type="search" id="event-search" placeholder="Search events" autocomplete="off">
+                    </label>
+
+                </div>
+
+
+                <div class="event-grid" id="event-grid">
+
+                    <!-- Event 1 (featured) -->
+                    <article class="event-card" data-category="academic">
+
+                        <div class="event-image">
+                            <img src="https://images.unsplash.com/photo-1758270705290-62b6294dd044?auto=format&fit=crop&w=1000&q=75"
+                                 alt="Students working together on a laptop in a lecture hall"
+                                 width="1000" height="700" loading="lazy">
+                            <span class="event-category">Academic</span>
+                        </div>
+
+                        <div class="event-info">
+                            <p class="event-type">Academic event</p>
+                            <h3>Student Academic Workshop</h3>
+                            <p class="event-description">
+                                An opportunity for students to learn, share ideas
+                                and develop useful academic skills.
+                            </p>
+
+                            <ul class="event-details">
+                                <li><svg class="icon" aria-hidden="true"><use href="#i-calendar"/></svg>Date to be announced</li>
+                                <li><svg class="icon" aria-hidden="true"><use href="#i-pin"/></svg>Campus venue to be announced</li>
+                            </ul>
+
+                            <a href="signin.html" class="event-link">
+                                View details
+                                <svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg>
+                            </a>
+                        </div>
+
+                    </article>
+
+
+                    <!-- Event 2 -->
+                    <article class="event-card" data-category="community">
+
+                        <div class="event-image">
+                            <img src="https://images.unsplash.com/photo-1760420940953-3958ad9f6287?auto=format&fit=crop&w=800&q=75"
+                                 alt="A speaker addressing an audience from a stage"
+                                 width="800" height="600" loading="lazy">
+                            <span class="event-category">Community</span>
+                        </div>
+
+                        <div class="event-info">
+                            <p class="event-type">Student activity</p>
+                            <h3>Student Leadership Forum</h3>
+                            <p class="event-description">
+                                A space for students to exchange ideas, discuss
+                                leadership and share experiences.
+                            </p>
+
+                            <ul class="event-details">
+                                <li><svg class="icon" aria-hidden="true"><use href="#i-calendar"/></svg>Date to be announced</li>
+                                <li><svg class="icon" aria-hidden="true"><use href="#i-pin"/></svg>Campus venue to be announced</li>
+                            </ul>
+
+                            <a href="signin.html" class="event-link">
+                                View details
+                                <svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg>
+                            </a>
+                        </div>
+
+                    </article>
+
+
+                    <!-- Event 3 -->
+                    <article class="event-card" data-category="innovation">
+
+                        <div class="event-image">
+                            <img src="https://images.unsplash.cm/photo-1529465230221-a0d10e46fcbb?auto=format&fit=crop&w=800&q=75"
+                                 alt="A student coding on a laptop during a hackathon"
+                                 width="800" height="600" loading="lazy">
+                            <span class="event-category">Innovation</span>
+                        </div>
+
+                        <div class="event-info">
+                            <p class="event-type">Innovation event</p>
+                            <h3>Technology and Innovation Day</h3>
+                            <p class="event-description">
+                                Discover new ideas, explore technology and connect
+                                with people interested in innovation.
+                            </p>
+
+                            <ul class="event-details">
+                                <li><svg class="icon" aria-hidden="true"><use href="#i-calendar"/></svg>Date to be announced</li>
+                                <li><svg class="icon" aria-hidden="true"><use href="#i-pin"/></svg>Campus venue to be announced</li>
+                            </ul>
+
+                            <a href="signin.html" class="event-link">
+                                View details
+                                <svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg>
+                            </a>
+                        </div>
+
+                    </article>
+
+                </div>
+
+                <p class="empty-state" id="empty-state" hidden>
+                    No events match your search. Try a different word or choose “All”.
                 </p>
+
+                <p class="sample-note">
+                    <svg class="icon" aria-hidden="true"><use href="#i-info"/></svg>
+                    <span>These are sample events for the prototype, not confirmed
+                    university events.</span>
+                </p>
+
             </div>
-
-            <a href="#events" class="view-all">View all events →</a>
-
-        </div>
+        </section>
 
 
-        <div class="event-grid">
+        <!-- About -->
+        <section class="about" id="about">
+            <div class="container about-grid">
 
-            <!-- Event Card 1 -->
-            <article class="event-card">
+                <figure class="about-photo">
+                    <img src="https://images.unsplash.com/photo-1698741563963-5f771b5abe7e?auto=format&fit=crop&w=900&q=75"
+                         alt="A university building with a palm tree in front of it"
+                         width="900" height="1100" loading="lazy">
+                </figure>
 
-                <div class="event-image event-purple">
-                    <span>🎓</span>
-                    <span class="event-category">Academic</span>
-                </div>
-
-                <div class="event-info">
-
-                    <p class="event-type">ACADEMIC EVENT</p>
-
-                    <h3>Student Academic Workshop</h3>
-
-                    <p class="event-description">
-                        An opportunity for students to learn, share ideas
-                        and develop useful academic skills.
+                <div class="about-intro">
+                    <h2>Campus life, all in one place.</h2>
+                    <p>
+                        Zula is a proposed university events platform designed to
+                        help the MUST community discover activities, stay informed
+                        and participate in campus life.
                     </p>
-
-                    <div class="event-details">
-                        <span>📅 Date to be announced</span>
-                        <span>📍 Campus venue to be announced</span>
+                    <div class="about-actions">
+                        <a href="signup.html" class="explore-btn">Sign up as a new student</a>
+                        <a href="signin.html" class="text-link">Already registered? Sign in</a>
                     </div>
-
-                    <a href="#login" class="event-link">
-                        View Details →
-                    </a>
-
                 </div>
 
-            </article>
+                <ul class="about-points">
+                    <li class="point point-saffron">
+                        <svg class="icon" aria-hidden="true"><use href="#i-search"/></svg>
+                        <strong>Discover</strong>
+                        <span>Browse workshops, forums and student activities in one place.</span>
+                    </li>
+                    <li class="point point-deep">
+                        <svg class="icon" aria-hidden="true"><use href="#i-bell"/></svg>
+                        <strong>Stay informed</strong>
+                        <span>Know what is coming up across the university.</span>
+                    </li>
+                    <li class="point point-light">
+                        <svg class="icon" aria-hidden="true"><use href="#i-users"/></svg>
+                        <strong>Take part</strong>
+                        <span>Join in and meet other members of the MUST community.</span>
+                    </li>
+                </ul>
 
+            </div>
+        </section>
 
-            <!-- Event Card 2 -->
-            <article class="event-card">
-
-                <div class="event-image event-orange">
-                    <span>🎤</span>
-                    <span class="event-category">Community</span>
-                </div>
-
-                <div class="event-info">
-
-                    <p class="event-type">STUDENT ACTIVITY</p>
-
-                    <h3>Student Leadership Forum</h3>
-
-                    <p class="event-description">
-                        A space for students to exchange ideas, discuss
-                        leadership and share experiences.
-                    </p>
-
-                    <div class="event-details">
-                        <span>📅 Date to be announced</span>
-                        <span>📍 Campus venue to be announced</span>
-                    </div>
-
-                    <a href="#login" class="event-link">
-                        View Details →
-                    </a>
-
-                </div>
-
-            </article>
-
-
-            <!-- Event Card 3 -->
-            <article class="event-card">
-
-                <div class="event-image event-blue">
-                    <span>💡</span>
-                    <span class="event-category">Innovation</span>
-                </div>
-
-                <div class="event-info">
-
-                    <p class="event-type">INNOVATION EVENT</p>
-
-                    <h3>Technology and Innovation Day</h3>
-
-                    <p class="event-description">
-                        Discover new ideas, explore technology and connect
-                        with people interested in innovation.
-                    </p>
-
-                    <div class="event-details">
-                        <span>📅 Date to be announced</span>
-                        <span>📍 Campus venue to be announced</span>
-                    </div>
-
-                    <a href="#login" class="event-link">
-                        View Details →
-                    </a>
-
-                </div>
-
-            </article>
-
-        </div>
-
-        <p class="sample-note">
-            Note: These are sample events for the prototype, not confirmed
-            university events.
-        </p>
-
-    </section>
-
-
-    <!-- About Section -->
-    <section class="about" id="about">
-
-        <div class="about-icon">🎓</div>
-
-        <div class="about-content">
-
-            <span class="eyebrow">ABOUT ZULA</span>
-
-            <h2>Campus life, all in one place.</h2>
-
-            <p>
-                Zula is a proposed university events platform designed to
-                help the MUST community discover activities, stay informed
-                and participate in campus life.
-            </p>
-
-        </div>
-
-    </section>
+    </main>
 
 
     <!-- Footer -->
     <footer class="footer">
+        <div class="footer-inner">
 
-        <a href="#home" class="footer-logo">
-            Zula<span class="dot">.</span>
-        </a>
+            <div class="footer-brand">
+                <p class="footer-tagline">Connecting the MUST community through events.</p>
+            </div>
 
-        <p>
-            Connecting the MUST community through events.
-        </p>
+        </div>
 
-        <p class="copyright">
-            &copy; 2026 Zula — MUST Events Platform
-        </p>
+        <a href="#home" class="footer-wordmark" aria-label="Zula, back to top">Zula<span class="dot">.</span></a>
 
+        <div class="footer-bottom">
+            <p class="copyright">&copy; 2026 Zula — MUST Events Platform</p>
+            <p class="credits">
+                Photos from
+                <a href="https://unsplash.com" target="_blank" rel="noopener">Unsplash</a>:
+                Askas Jeremy, Vitaly Gariev, Tahsin Labib, David Rangel and Tim Kelly.
+            </p>
+        </div>
     </footer>
+
+
+    <script>
+        (function () {
+            // Mobile menu
+            var toggle = document.querySelector('.nav-toggle');
+            var nav = document.getElementById('site-nav');
+
+            toggle.addEventListener('click', function () {
+                var open = nav.classList.toggle('is-open');
+                toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+            });
+
+            nav.addEventListener('click', function (e) {
+                if (e.target.tagName === 'A') {
+                    nav.classList.remove('is-open');
+                    toggle.setAttribute('aria-expanded', 'false');
+                }
+            });
+
+            // Event filters + search
+            var grid = document.getElementById('event-grid');
+            var cards = grid.querySelectorAll('.event-card');
+            var filters = document.querySelectorAll('.filter');
+            var search = document.getElementById('event-search');
+            var empty = document.getElementById('empty-state');
+            var category = 'all';
+
+            function apply() {
+                var query = search.value.trim().toLowerCase();
+                var visible = 0;
+
+                cards.forEach(function (card) {
+                    var matchesCategory = category === 'all' || card.getAttribute('data-category') === category;
+                    var matchesQuery = !query || card.textContent.toLowerCase().indexOf(query) !== -1;
+                    var show = matchesCategory && matchesQuery;
+                    card.hidden = !show;
+                    if (show) { visible++; }
+                });
+
+                // The featured layout only works when every event is showing
+                grid.classList.toggle('is-filtered', category !== 'all' || query !== '');
+                empty.hidden = visible !== 0;
+            }
+
+            filters.forEach(function (btn) {
+                btn.addEventListener('click', function () {
+                    category = btn.getAttribute('data-filter');
+
+                    filters.forEach(function (b) {
+                        var active = b === btn;
+                        b.classList.toggle('is-active', active);
+                        b.setAttribute('aria-pressed', active ? 'true' : 'false');
+                    });
+
+                    apply();
+                });
+            });
+
+            search.addEventListener('input', apply);
+        })();
+    </script>
 
 </body>
 </html>
