@@ -1,4 +1,24 @@
-/* General Styling */
+/* ==========================================================
+   Zula | Create account
+   Shares its look with signin.css
+   ========================================================== */
+
+:root {
+    --ink: #25285f;
+    --primary: #34377c;
+    --primary-dark: #25285f;
+    --accent: #5658a5;
+    --orange: #ed9c52;
+    --text: #333650;
+    --muted: #646880;
+    --line: #dedfee;
+    --field: #fafaff;
+    --page: #f7f7ff;
+    --success: #267447;
+    --error: #b3261e;
+    --radius: 10px;
+}
+
 * {
     margin: 0;
     padding: 0;
@@ -6,268 +26,503 @@
 }
 
 body {
-    font-family: Arial, Helvetica, sans-serif;
-    background: #f7f7ff;
-    color: #333650;
+    font-family: "Inter", system-ui, -apple-system, "Segoe UI", Arial, sans-serif;
+    background: var(--page);
+    color: var(--text);
+    min-height: 100vh;
+    -webkit-font-smoothing: antialiased;
+}
+
+/* Icons (Lucide, stroke based) */
+.icon {
+    width: 20px;
+    height: 20px;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 2;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    flex-shrink: 0;
+}
+
+:focus-visible {
+    outline: 3px solid rgba(237, 156, 82, 0.7);
+    outline-offset: 2px;
+}
+
+
+/* ---------- Page layout ---------- */
+.auth {
+    display: grid;
+    grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
     min-height: 100vh;
 }
 
 
-/* Header */
-.header {
+/* ---------- Photo showcase (stays in view while the form scrolls) ---------- */
+/* Put a real campus photo at images/campus-hero.jpg.
+   If it is missing, the indigo gradient still looks intentional. */
+.showcase {
+    position: sticky;
+    top: 0;
+    height: 100vh;
     display: flex;
+    flex-direction: column;
     justify-content: space-between;
-    align-items: center;
-    padding: 16px 7%;
-    background: white;
-    box-shadow: 0 2px 12px rgba(30, 35, 80, 0.05);
+    gap: 40px;
+    padding: 40px 56px 56px;
+    color: white;
+    background:
+        linear-gradient(180deg, rgba(37, 40, 95, 0.78) 0%, rgba(37, 40, 95, 0.55) 40%, rgba(25, 27, 70, 0.94) 100%),
+        url("images/campus-hero.jpg") center / cover no-repeat,
+        var(--ink);
 }
 
 .brand {
-    display: flex;
+    display: inline-flex;
     align-items: center;
     gap: 12px;
     text-decoration: none;
+    color: inherit;
+    align-self: flex-start;
 }
 
-.brand img {
-    width: 50px;
-    height: 50px;
+.brand-logo {
+    display: grid;
+    place-items: center;
+    width: 52px;
+    height: 52px;
+    background: white;
+    border-radius: 12px;
+    padding: 6px;
+}
+
+.brand-logo img {
+    width: 100%;
+    height: 100%;
     object-fit: contain;
 }
 
-.brand h2 {
-    font-size: 27px;
-    color: #292d68;
+.brand-text {
+    display: flex;
+    flex-direction: column;
+    line-height: 1.2;
 }
 
-.brand h2 span {
-    color: #ed9c52;
+.brand-name {
+    font-size: 26px;
+    font-weight: 800;
+    letter-spacing: -0.5px;
 }
 
-.brand p {
-    color: #777b91;
-    font-size: 11px;
+.brand-name span {
+    color: var(--orange);
+}
+
+.brand small {
+    font-size: 12px;
+    color: rgba(255, 255, 255, 0.75);
+}
+
+.showcase-body {
+    max-width: 480px;
+}
+
+.showcase h1 {
+    font-size: clamp(30px, 3.2vw, 44px);
+    line-height: 1.15;
+    font-weight: 800;
+    letter-spacing: -1px;
+    margin-bottom: 16px;
+}
+
+.showcase-body > p {
+    font-size: 16px;
+    line-height: 1.7;
+    color: rgba(255, 255, 255, 0.85);
+    max-width: 420px;
+}
+
+.feature-list {
+    list-style: none;
+    margin-top: 32px;
+    display: grid;
+    gap: 14px;
+}
+
+.feature-list li {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    font-size: 14px;
+    line-height: 1.5;
+    color: rgba(255, 255, 255, 0.82);
+}
+
+.feature-list strong {
+    color: white;
+    font-weight: 600;
+}
+
+.feature-icon {
+    display: grid;
+    place-items: center;
+    width: 42px;
+    height: 42px;
+    border-radius: 12px;
+    background: rgba(255, 255, 255, 0.12);
+    border: 1px solid rgba(255, 255, 255, 0.22);
+    backdrop-filter: blur(6px);
+    color: var(--orange);
+    flex-shrink: 0;
+}
+
+
+/* ---------- Form side ---------- */
+.auth-main {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    padding: 0 clamp(24px, 5vw, 64px);
+}
+
+.topbar {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 6px;
+    padding: 28px 0 0;
+    font-size: 14px;
+    color: var(--muted);
 }
 
 .back-link {
+    padding: 8px 12px;
+    margin-right: -12px;
+    border-radius: 8px;
+    color: var(--primary);
+    font-weight: 600;
     text-decoration: none;
-    color: #34377c;
-    font-weight: bold;
-    font-size: 14px;
+    transition: color 0.2s, background 0.2s;
 }
 
 .back-link:hover {
-    color: #ed9c52;
+    color: var(--ink);
+    background: rgba(86, 88, 165, 0.08);
 }
 
 
-/* Registration Layout */
-.registration-container {
-    padding: 45px 20px;
-    display: flex;
-    justify-content: center;
-}
-
+/* ---------- Registration card ---------- */
 .registration-card {
     width: 100%;
-    max-width: 560px;
-    background: white;
-    padding: 40px;
-    border-radius: 18px;
-    border: 1px solid #eeeef6;
-    box-shadow: 0 12px 40px rgba(35, 40, 90, 0.07);
+    max-width: 520px;
+    margin: auto;
+    padding: 32px 0;
 }
 
-
-/* Heading */
 .heading {
-    text-align: center;
-    margin-bottom: 30px;
+    margin-bottom: 28px;
 }
 
-.small-title {
-    color: #6567b9;
-    font-size: 11px;
-    font-weight: bold;
-    letter-spacing: 1.8px;
-}
-
-.heading h1 {
-    color: #25285f;
+.heading h2 {
     font-size: 30px;
-    margin: 12px 0;
+    font-weight: 800;
+    letter-spacing: -0.5px;
+    color: var(--ink);
+    margin-bottom: 8px;
 }
 
 .heading p {
-    color: #777b91;
-    font-size: 14px;
-    line-height: 1.7;
+    color: var(--muted);
+    font-size: 15px;
+    line-height: 1.6;
 }
 
 
-/* Form Fields */
+/* ---------- Fields ---------- */
 .form-group {
     margin-bottom: 20px;
+}
+
+.form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0 16px;
+    align-items: start;
 }
 
 .form-group label {
     display: block;
     margin-bottom: 8px;
     font-size: 14px;
-    font-weight: bold;
-    color: #383b5c;
+    font-weight: 600;
+    color: var(--text);
 }
 
-.form-group input,
-.form-group select {
+.input-wrap {
+    position: relative;
+    display: flex;
+    align-items: center;
+    background: var(--field);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    transition: border-color 0.2s, box-shadow 0.2s, background 0.2s;
+}
+
+.input-wrap:hover {
+    border-color: #c4c6e0;
+}
+
+.input-wrap:focus-within {
+    background: white;
+    border-color: var(--accent);
+    box-shadow: 0 0 0 4px rgba(86, 88, 165, 0.14);
+}
+
+.input-icon {
+    position: absolute;
+    left: 14px;
+    color: #8b8fa8;
+    pointer-events: none;
+    transition: color 0.2s;
+}
+
+.input-wrap:focus-within .input-icon {
+    color: var(--accent);
+}
+
+.input-wrap input,
+.input-wrap select {
     width: 100%;
-    padding: 13px;
-    border: 1px solid #dedfee;
-    border-radius: 9px;
-    background: #fcfcff;
-    color: #333650;
-    font-size: 14px;
+    padding: 14px 14px 14px 44px;
+    border: none;
+    background: transparent;
     outline: none;
+    font: inherit;
+    font-size: 15px;
+    color: var(--text);
 }
 
-.form-group input:focus,
-.form-group select:focus {
-    border-color: #5658a5;
-    box-shadow: 0 0 0 3px rgba(86, 88, 165, 0.1);
+.input-wrap input::placeholder {
+    color: #9a9db3;
 }
 
+/* Custom select arrow */
+.input-wrap select {
+    appearance: none;
+    -webkit-appearance: none;
+    padding-right: 44px;
+    cursor: pointer;
+}
+
+.chevron {
+    position: absolute;
+    right: 14px;
+    width: 18px;
+    height: 18px;
+    color: #8b8fa8;
+    pointer-events: none;
+}
+
+/* Hints */
 .form-group small {
     display: block;
     margin-top: 6px;
-    font-size: 11px;
-    color: #85889c;
+    font-size: 12px;
+    color: var(--muted);
 }
 
 .field-note {
-    margin-top: 8px;
-    font-size: 12px;
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+    margin-top: 10px;
+    padding: 10px 12px;
+    border-radius: 8px;
+    background: #f1f1fb;
+    font-size: 13px;
     line-height: 1.5;
-    color: #777b91;
+    color: var(--primary);
+}
+
+.field-note .icon {
+    width: 16px;
+    height: 16px;
+    margin-top: 2px;
 }
 
 
-/* Hidden Fields */
+/* Toggled by signup.js */
 .hidden {
     display: none;
 }
 
 
-/* Terms */
+/* ---------- Terms ---------- */
 .terms {
     display: flex;
     align-items: flex-start;
     gap: 10px;
-    margin: 22px 0;
+    margin: 6px 0 24px;
 }
 
 .terms input {
-    margin-top: 4px;
-    accent-color: #34377c;
+    width: 16px;
+    height: 16px;
+    margin-top: 3px;
+    accent-color: var(--primary);
+    cursor: pointer;
 }
 
 .terms label {
-    color: #777b91;
-    font-size: 12px;
+    color: var(--muted);
+    font-size: 13px;
     line-height: 1.6;
+    cursor: pointer;
 }
 
 
-/* Create Account Button */
+/* ---------- Button ---------- */
 .create-button {
     width: 100%;
     padding: 15px;
     border: none;
-    border-radius: 9px;
-    background: #34377c;
+    border-radius: var(--radius);
+    background: var(--primary);
     color: white;
+    font: inherit;
     font-size: 15px;
-    font-weight: bold;
+    font-weight: 600;
     cursor: pointer;
-    transition: background 0.3s, transform 0.3s;
+    box-shadow: 0 6px 16px rgba(52, 55, 124, 0.28);
+    transition: background 0.2s, transform 0.2s, box-shadow 0.2s;
 }
 
 .create-button:hover {
-    background: #25285f;
-    transform: translateY(-2px);
+    background: var(--primary-dark);
+    transform: translateY(-1px);
+    box-shadow: 0 10px 22px rgba(52, 55, 124, 0.32);
+}
+
+.create-button:active {
+    transform: translateY(0);
 }
 
 
-/* Feedback Messages */
+/* ---------- Feedback messages ---------- */
 .message {
-    margin-top: 15px;
+    margin-top: 14px;
     font-size: 13px;
     line-height: 1.6;
 }
 
+.message:empty {
+    display: none;
+}
+
 .success {
-    color: #267447;
+    color: var(--success);
 }
 
 .error {
-    color: #c0392b;
+    color: var(--error);
 }
 
 
-/* Sign In Link */
+/* ---------- Footer area ---------- */
 .signin-prompt {
-    margin-top: 25px;
+    margin-top: 28px;
+    padding-top: 22px;
+    border-top: 1px solid var(--line);
     text-align: center;
-    font-size: 13px;
-    color: #777b91;
+    font-size: 14px;
+    color: var(--muted);
 }
 
 .signin-prompt a {
-    color: #5658a5;
+    color: var(--accent);
     text-decoration: none;
-    font-weight: bold;
+    font-weight: 600;
 }
 
 .signin-prompt a:hover {
     text-decoration: underline;
 }
 
-
-/* Footer */
 .footer {
     text-align: center;
-    padding: 20px;
-    color: #85889c;
+    padding: 20px 0 24px;
+    color: var(--muted);
     font-size: 12px;
 }
 
 
-/* Mobile Screens */
-@media (max-width: 600px) {
+/* ---------- Tablet and mobile ---------- */
+@media (max-width: 900px) {
 
-    .header {
-        padding: 14px 5%;
+    .auth {
+        grid-template-columns: 1fr;
+        min-height: 0;
     }
 
-    .brand img {
-        width: 42px;
-        height: 42px;
+    /* Photo becomes a compact banner above the form */
+    .showcase {
+        position: static;
+        height: auto;
+        padding: 24px 24px 32px;
+        gap: 24px;
     }
 
-    .brand h2 {
-        font-size: 23px;
+    .showcase h1 {
+        font-size: 28px;
+        margin-bottom: 0;
     }
 
-    .registration-container {
-        padding: 25px 15px;
+    .showcase-body > p,
+    .feature-list {
+        display: none;
+    }
+
+    .auth-main {
+        min-height: 0;
+        padding: 0 24px;
+    }
+
+    .topbar {
+        padding-top: 16px;
     }
 
     .registration-card {
-        padding: 28px 22px;
+        padding: 16px 0 24px;
+    }
+}
+
+@media (max-width: 560px) {
+
+    .form-row {
+        grid-template-columns: 1fr;
     }
 
-    .heading h1 {
+    .brand-logo {
+        width: 44px;
+        height: 44px;
+    }
+
+    .brand-name {
+        font-size: 23px;
+    }
+
+    .showcase h1 {
+        font-size: 24px;
+    }
+
+    .heading h2 {
         font-size: 26px;
     }
+}
 
+@media (prefers-reduced-motion: reduce) {
+    * {
+        transition: none !important;
+    }
 }

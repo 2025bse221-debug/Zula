@@ -1,220 +1,255 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#25285f">
 
     <title>Create Account | Zula</title>
 
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/signup.css">
 </head>
 
 <body>
 
-    <!-- Header -->
-    <header class="header">
+    <!-- Icon sprite: Lucide icons (lucide.dev, ISC license) -->
+    <svg xmlns="http://www.w3.org/2000/svg" width="0" height="0" style="position:absolute" aria-hidden="true">
+        <symbol id="i-user" viewBox="0 0 24 24"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></symbol>
+        <symbol id="i-mail" viewBox="0 0 24 24"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></symbol>
+        <symbol id="i-lock" viewBox="0 0 24 24"><rect width="18" height="11" x="3" y="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></symbol>
+        <symbol id="i-id-card" viewBox="0 0 24 24"><path d="M16 10h2"/><path d="M16 14h2"/><path d="M6.17 15a3 3 0 0 1 5.66 0"/><circle cx="9" cy="11" r="2"/><rect x="2" y="5" width="20" height="14" rx="2"/></symbol>
+        <symbol id="i-building" viewBox="0 0 24 24"><path d="M6 22V4a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v18Z"/><path d="M6 12H4a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h2"/><path d="M18 9h2a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2h-2"/><path d="M10 6h4"/><path d="M10 10h4"/><path d="M10 14h4"/><path d="M10 18h4"/></symbol>
+        <symbol id="i-users" viewBox="0 0 24 24"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></symbol>
+        <symbol id="i-chevron" viewBox="0 0 24 24"><path d="m6 9 6 6 6-6"/></symbol>
+        <symbol id="i-info" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></symbol>
+        <symbol id="i-calendar" viewBox="0 0 24 24"><path d="M8 2v4"/><path d="M16 2v4"/><rect width="18" height="18" x="3" y="4" rx="2"/><path d="M3 10h18"/></symbol>
+        <symbol id="i-bell" viewBox="0 0 24 24"><path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9"/><path d="M10.3 21a1.94 1.94 0 0 0 3.4 0"/></symbol>
+        <symbol id="i-megaphone" viewBox="0 0 24 24"><path d="m3 11 18-5v12L3 14v-3z"/><path d="M11.6 16.8a3 3 0 1 1-5.8-1.6"/></symbol>
+        <symbol id="i-arrow-left" viewBox="0 0 24 24"><path d="m12 19-7-7 7-7"/><path d="M19 12H5"/></symbol>
+    </svg>
 
-        <a href="index.html" class="brand">
+    <div class="auth">
 
-            <img src="images/campus_logo.png" alt="MUST Logo">
+        <!-- Left: photo showcase -->
+        <aside class="showcase">
 
-            <div>
-                <h2>Zula<span>.</span></h2>
-                <p>MUST Events Platform</p>
+            <a href="index.html" class="brand">
+                <span class="brand-logo">
+                    <img src="images/campus_logo.png" alt="MUST University logo">
+                </span>
+                <span class="brand-text">
+                    <span class="brand-name">Zula<span>.</span></span>
+                    <small>MUST Events Platform</small>
+                </span>
+            </a>
+
+            <div class="showcase-body">
+                <h1>Join the ZULA community.</h1>
+                <p>Create a free account to follow what is happening on campus and take part.</p>
+
+                <ul class="feature-list">
+                    <li>
+                        <span class="feature-icon"><svg class="icon" aria-hidden="true"><use href="#i-calendar"/></svg></span>
+                        <span><strong>Discover events</strong> across every faculty and club</span>
+                    </li>
+                    <li>
+                        <span class="feature-icon"><svg class="icon" aria-hidden="true"><use href="#i-bell"/></svg></span>
+                        <span><strong>Get reminders</strong> for the events you save</span>
+                    </li>
+                    <li>
+                        <span class="feature-icon"><svg class="icon" aria-hidden="true"><use href="#i-megaphone"/></svg></span>
+                        <span><strong>Run an association?</strong> Register as an event manager to publish your events</span>
+                    </li>
+                </ul>
             </div>
 
-        </a>
-
-        <a href="signin.html" class="back-link">Sign In</a>
-
-    </header>
+        </aside>
 
 
-    <!-- Registration Section -->
-    <main class="registration-container">
+        <!-- Right: form -->
+        <div class="auth-main">
 
-        <section class="registration-card">
-
-            <div class="heading">
-                <span class="small-title">JOIN THE MUST COMMUNITY</span>
-
-                <h1>Create Your Account</h1>
-
-                <p>
-                    Join Zula to discover events and connect with
-                    the university community.
-                </p>
+            <div class="topbar">
+                <span class="topbar-text">Already registered?</span>
+                <a href="signin.html" class="back-link">Sign in</a>
             </div>
 
+            <main class="registration-card">
 
-            <!-- Account Type -->
-            <form id="signupForm">
-
-                <div class="form-group">
-
-                    <label for="role">I want to register as</label>
-
-                    <select id="role" name="role" required>
-
-                        <option value="student">Student</option>
-
-                        <option value="manager">Event Manager</option>
-
-                    </select>
-
+                <div class="heading">
+                    <h2>Create your account</h2>
+                    <p>It takes about a minute. Choose your account type to get started.</p>
                 </div>
 
+                <form id="signupForm">
 
-                <!-- Full Name -->
-                <div class="form-group">
+                    <!-- Account type -->
+                    <div class="form-group">
+                        <label for="role">I want to register as</label>
 
-                    <label for="fullname">Full Name</label>
-
-                    <input
-                        type="text"
-                        id="fullname"
-                        name="fullname"
-                        placeholder="Enter your full name"
-                        required
-                    >
-
-                </div>
-
-
-                <!-- Email -->
-                <div class="form-group">
-
-                    <label for="email">Email Address</label>
-
-                    <input
-                        type="email"
-                        id="email"
-                        name="email"
-                        placeholder="Enter your email address"
-                        required
-                    >
-
-                </div>
+                        <div class="input-wrap select-wrap">
+                            <svg class="icon input-icon" aria-hidden="true"><use href="#i-users"/></svg>
+                            <select id="role" name="role" required>
+                                <option value="student">Student</option>
+                                <option value="manager">Event Manager</option>
+                            </select>
+                            <svg class="icon chevron" aria-hidden="true"><use href="#i-chevron"/></svg>
+                        </div>
+                    </div>
 
 
-                <!-- Student Number -->
-                <div class="form-group" id="studentGroup">
+                    <!-- Full name -->
+                    <div class="form-group">
+                        <label for="fullname">Full name</label>
 
-                    <label for="studentNumber">Student Number</label>
-
-                    <input
-                        type="text"
-                        id="studentNumber"
-                        name="studentNumber"
-                        placeholder="Enter your student number"
-                    >
-
-                </div>
-
-
-                <!-- Event Manager Details -->
-                <div class="form-group hidden" id="managerGroup">
-
-                    <label for="association">Association or Organization</label>
-
-                    <input
-                        type="text"
-                        id="association"
-                        name="association"
-                        placeholder="Enter your association name"
-                    >
-
-                    <p class="field-note">
-                        Event Manager accounts require administrator approval.
-                    </p>
-
-                </div>
+                        <div class="input-wrap">
+                            <svg class="icon input-icon" aria-hidden="true"><use href="#i-user"/></svg>
+                            <input
+                                type="text"
+                                id="fullname"
+                                name="fullname"
+                                placeholder="Enter your full name"
+                                autocomplete="name"
+                                required
+                            >
+                        </div>
+                    </div>
 
 
-                <!-- Password -->
-                <div class="form-group">
+                    <!-- Email -->
+                    <div class="form-group">
+                        <label for="email">Email address</label>
 
-                    <label for="password">Password</label>
-
-                    <input
-                        type="password"
-                        id="password"
-                        name="password"
-                        placeholder="Create a password"
-                        minlength="8"
-                        required
-                    >
-
-                    <small>Use at least 8 characters.</small>
-
-                </div>
-
-
-                <!-- Confirm Password -->
-                <div class="form-group">
-
-                    <label for="confirmPassword">Confirm Password</label>
-
-                    <input
-                        type="password"
-                        id="confirmPassword"
-                        name="confirmPassword"
-                        placeholder="Enter your password again"
-                        minlength="8"
-                        required
-                    >
-
-                </div>
+                        <div class="input-wrap">
+                            <svg class="icon input-icon" aria-hidden="true"><use href="#i-mail"/></svg>
+                            <input
+                                type="email"
+                                id="email"
+                                name="email"
+                                placeholder="you@must.ac.ug"
+                                autocomplete="email"
+                                required
+                            >
+                        </div>
+                    </div>
 
 
-                <!-- Terms -->
-                <div class="terms">
+                    <!-- Student number -->
+                    <div class="form-group" id="studentGroup">
+                        <label for="studentNumber">Student number</label>
 
-                    <input type="checkbox" id="terms" required>
-
-                    <label for="terms">
-                        I agree to use Zula responsibly and provide
-                        accurate registration information.
-                    </label>
-
-                </div>
-
-
-                <!-- Submit -->
-                <button type="submit" class="create-button">
-                    Create Account
-                </button>
+                        <div class="input-wrap">
+                            <svg class="icon input-icon" aria-hidden="true"><use href="#i-id-card"/></svg>
+                            <input
+                                type="text"
+                                id="studentNumber"
+                                name="studentNumber"
+                                placeholder="Enter your student number"
+                            >
+                        </div>
+                    </div>
 
 
-                <!-- Feedback Message -->
-                <p id="message" class="message" aria-live="polite"></p>
+                    <!-- Event manager details -->
+                    <div class="form-group hidden" id="managerGroup">
+                        <label for="association">Association or organization</label>
+
+                        <div class="input-wrap">
+                            <svg class="icon input-icon" aria-hidden="true"><use href="#i-building"/></svg>
+                            <input
+                                type="text"
+                                id="association"
+                                name="association"
+                                placeholder="Enter your association name"
+                            >
+                        </div>
+
+                        <p class="field-note">
+                            <svg class="icon" aria-hidden="true"><use href="#i-info"/></svg>
+                            Event Manager accounts require administrator approval.
+                        </p>
+                    </div>
 
 
-                <div class="signin-prompt">
+                    <!-- Passwords -->
+                    <div class="form-row">
 
+                        <div class="form-group">
+                            <label for="password">Password</label>
+
+                            <div class="input-wrap">
+                                <svg class="icon input-icon" aria-hidden="true"><use href="#i-lock"/></svg>
+                                <input
+                                    type="password"
+                                    id="password"
+                                    name="password"
+                                    placeholder="Create a password"
+                                    autocomplete="new-password"
+                                    minlength="8"
+                                    required
+                                >
+                            </div>
+
+                            <small>Use at least 8 characters.</small>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="confirmPassword">Confirm password</label>
+
+                            <div class="input-wrap">
+                                <svg class="icon input-icon" aria-hidden="true"><use href="#i-lock"/></svg>
+                                <input
+                                    type="password"
+                                    id="confirmPassword"
+                                    name="confirmPassword"
+                                    placeholder="Enter it again"
+                                    autocomplete="new-password"
+                                    minlength="8"
+                                    required
+                                >
+                            </div>
+                        </div>
+
+                    </div>
+
+
+                    <!-- Terms -->
+                    <div class="terms">
+                        <input type="checkbox" id="terms" required>
+
+                        <label for="terms">
+                            I agree to use Zula responsibly and provide
+                            accurate registration information.
+                        </label>
+                    </div>
+
+
+                    <!-- Submit -->
+                    <button type="submit" class="create-button">Create account</button>
+
+                    <!-- Feedback message -->
+                    <p id="message" class="message" aria-live="polite"></p>
+
+                </form>
+
+                <p class="signin-prompt">
                     Already have an account?
-
                     <a href="signin.html">Sign in</a>
+                </p>
 
-                </div>
+            </main>
 
-            </form>
+            <footer class="footer">
+                <p>© 2026 Zula | MUST Events Platform</p>
+            </footer>
 
-        </section>
+        </div>
 
-    </main>
+    </div>
 
-
-    <!-- Footer -->
-    <footer class="footer">
-
-        <p>© 2026 Zula | MUST Events Platform</p>
-
-    </footer>
-
-    <script type="module" src="js/signup.js"></script>
-
+    <script type="module" src="signup.js"></script>
 </body>
-
 </html>
