@@ -1,430 +1,266 @@
 <!DOCTYPE html>
-
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#25285f">
 
-<title>Student Dashboard | Zula</title>
+    <title>Student Dashboard | Zula</title>
 
-<link rel="stylesheet" href="css/studentDashboard.css">
-
-
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/studentDashboard.css">
 </head>
 
 <body>
 
+    <!-- Icon sprite: Lucide icons (lucide.dev, ISC license) -->
+    <svg xmlns="http://www.w3.org/2000/svg" width="0" height="0" style="position:absolute" aria-hidden="true">
+        <symbol id="i-bell" viewBox="0 0 24 24"><path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9"/><path d="M10.3 21a1.94 1.94 0 0 0 3.4 0"/></symbol>
+        <symbol id="i-search" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></symbol>
+        <symbol id="i-logout" viewBox="0 0 24 24"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><path d="m16 17 5-5-5-5"/><path d="M21 12H9"/></symbol>
+        <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></symbol>
+        <symbol id="i-users" viewBox="0 0 24 24"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></symbol>
+        <symbol id="i-landmark" viewBox="0 0 24 24"><path d="M3 22h18"/><path d="M6 18v-7"/><path d="M10 18v-7"/><path d="M14 18v-7"/><path d="M18 18v-7"/><path d="m12 2 8 5H4z"/></symbol>
+        <symbol id="i-trophy" viewBox="0 0 24 24"><path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6"/><path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18"/><path d="M4 22h16"/><path d="M10 14.66V17c0 .55-.47.98-.97 1.21C7.85 18.75 7 20.24 7 22"/><path d="M14 14.66V17c0 .55.47.98.97 1.21C16.15 18.75 17 20.24 17 22"/><path d="M18 2H6v7a6 6 0 0 0 12 0V2Z"/></symbol>
+        <symbol id="i-book" viewBox="0 0 24 24"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></symbol>
+        <symbol id="i-cpu" viewBox="0 0 24 24"><rect width="16" height="16" x="4" y="4" rx="2"/><rect width="6" height="6" x="9" y="9" rx="1"/><path d="M15 2v2"/><path d="M15 20v2"/><path d="M2 15h2"/><path d="M2 9h2"/><path d="M20 15h2"/><path d="M20 9h2"/><path d="M9 2v2"/><path d="M9 20v2"/></symbol>
+        <symbol id="i-grid" viewBox="0 0 24 24"><rect width="7" height="7" x="3" y="3" rx="1"/><rect width="7" height="7" x="14" y="3" rx="1"/><rect width="7" height="7" x="14" y="14" rx="1"/><rect width="7" height="7" x="3" y="14" rx="1"/></symbol>
+        <symbol id="i-calendar-check" viewBox="0 0 24 24"><path d="M8 2v4"/><path d="M16 2v4"/><rect width="18" height="18" x="3" y="4" rx="2"/><path d="M3 10h18"/><path d="m9 16 2 2 4-4"/></symbol>
+    </svg>
 
-<!-- NAVIGATION BAR -->
-<header class="navbar">
+    <!-- NAVIGATION BAR -->
+    <header class="navbar">
 
-    <a class="logo" href="index.html">
-        <img src="images/campus_logo.png" alt="MUST logo">
-        <span>Zula</span>
-    </a>
-
-    <nav>
-        <a href="index.html">Home</a>
-        <a href="#categories">Events</a>
-        <a href="#upcoming-events">Upcoming Events</a>
-        <a href="#activities">My Activities</a>
-    </nav>
-
-    <div class="profile">
-
-        <!-- NOTIFICATION BELL -->
-        <div class="notification-wrapper">
-
-            <button
-                type="button"
-                class="notification-button"
-                id="notificationButton"
-                aria-label="Open notifications"
-                aria-expanded="false"
-                aria-controls="notificationPanel">
-
-                🔔
-
-                <span
-                    class="notification-badge"
-                    id="notificationBadge"
-                    hidden>
-                    0
-                </span>
-
-            </button>
-
-            <!-- NOTIFICATION PANEL -->
-            <div
-                class="notification-panel"
-                id="notificationPanel"
-                hidden>
-
-                <div class="notification-header">
-
-                    <div>
-                        <h3>Notifications</h3>
-                        <p id="notificationCount">No notifications</p>
-                    </div>
-
-                    <button
-                        type="button"
-                        id="markAllReadButton"
-                        class="mark-all-button">
-                        Mark all as read
-                    </button>
-
-                </div>
-
-                <div
-                    class="notification-list"
-                    id="notificationList">
-
-                    <p class="notification-loading">
-                        Loading notifications...
-                    </p>
-
-                </div>
-
-            </div>
-
-        </div>
-
-        <span class="profile-icon">S</span>
-
-        <a class="signout" href="signin.html">
-            Sign Out
+        <a class="logo" href="index.html">
+            <span class="logo-tile"><img src="images/zulaReminder Logo.png" alt="Zula Reminder logo"></span>
+            <span class="logo-name">Zula<span>.</span></span>
         </a>
 
-    </div>
+        <nav aria-label="Main">
+            <a href="index.html">Home</a>
+            <a href="#categories">Events</a>
+            <a href="#upcoming-events">Upcoming Events</a>
+            <a href="#activities">My Activities</a>
+        </nav>
 
-</header>
+        <div class="profile">
 
+            <!-- NOTIFICATION BELL -->
+            <div class="notification-wrapper">
 
-<main>
+                <button
+                    type="button"
+                    class="notification-button"
+                    id="notificationButton"
+                    aria-label="Open notifications"
+                    aria-expanded="false"
+                    aria-controls="notificationPanel">
 
-    <!-- WELCOME SECTION -->
-    <section class="welcome">
+                    <svg class="icon" aria-hidden="true"><use href="#i-bell"/></svg>
 
-        <div class="welcome-text">
+                    <span class="notification-badge" id="notificationBadge" hidden>0</span>
 
-            <p class="welcome-label">STUDENT DASHBOARD</p>
+                </button>
 
-            <h1>Welcome to Zula!</h1>
+                <!-- NOTIFICATION PANEL -->
+                <div class="notification-panel" id="notificationPanel" hidden>
 
-            <p>
-                Discover what's happening at MUST. Find events,
-                explore activities, and stay connected with your
-                university community.
-            </p>
+                    <div class="notification-header">
 
-        </div>
+                        <div>
+                            <h3>Notifications</h3>
+                            <p id="notificationCount">No notifications</p>
+                        </div>
 
-        <div class="welcome-icon" aria-hidden="true">
-            🎓
-        </div>
+                        <button type="button" id="markAllReadButton" class="mark-all-button">
+                            Mark all as read
+                        </button>
 
-    </section>
+                    </div>
 
-
-    <!-- SEARCH SECTION -->
-    <section class="search-section">
-
-        <h2>Find Your Next Event</h2>
-
-        <p>
-            Search published events by name, category,
-            description or venue.
-        </p>
-
-        <form class="search-box" id="eventSearchForm">
-
-            <input
-                id="eventSearch"
-                type="search"
-                placeholder="Search by event name or category..."
-                aria-label="Search events">
-
-            <button type="submit">Search</button>
-
-            <button
-                type="button"
-                class="clear-button"
-                id="clearSearch">
-                Clear
-            </button>
-
-        </form>
-
-        <p
-            id="searchMessage"
-            class="search-message"
-            aria-live="polite">
-        </p>
-
-    </section>
-
-
-    <!-- EVENT CATEGORIES -->
-    <section class="categories-section" id="categories">
-
-        <div class="section-heading">
-
-            <p class="small-heading">EXPLORE ZULA</p>
-
-            <h2>Explore Event Categories</h2>
-
-            <p>
-                Choose a category to discover events that interest you.
-            </p>
-
-        </div>
-
-
-        <div class="category-grid">
-
-            <!-- ASSOCIATION EVENTS -->
-            <a href="events.html?category=Association"
-               class="category-card">
-
-                <img
-                    src="images/associations.jpg"
-                    alt="Association Events"
-                    class="category-image">
-
-                <div class="category-content">
-
-                    <h3>Association Events</h3>
-
-                    <p>
-                        Discover association meetings, elections,
-                        celebrations, and student-led activities.
-                    </p>
-
-                    <span class="explore-link">
-                        Explore Events →
-                    </span>
+                    <div class="notification-list" id="notificationList">
+                        <p class="notification-loading">Loading notifications...</p>
+                    </div>
 
                 </div>
-
-            </a>
-
-
-            <!-- ADMINISTRATION -->
-            <a href="events.html?category=Administration"
-               class="category-card">
-
-                <img
-                    src="images/adminstration.jpg"
-                    alt="University Administration"
-                    class="category-image">
-
-                <div class="category-content">
-
-                    <h3>University Administration</h3>
-
-                    <p>
-                        Stay informed about official ceremonies,
-                        orientations, and university-wide meetings.
-                    </p>
-
-                    <span class="explore-link">
-                        Explore Events →
-                    </span>
-
-                </div>
-
-            </a>
-
-
-            <!-- SPORTS -->
-            <a href="events.html?category=Sports"
-               class="category-card">
-
-                <img
-                    src="images/games.jpg"
-                    alt="Games and Sports"
-                    class="category-image">
-
-                <div class="category-content">
-
-                    <h3>Games &amp; Sports</h3>
-
-                    <p>
-                        Find football matches, basketball games,
-                        athletics, and inter-faculty competitions.
-                    </p>
-
-                    <span class="explore-link">
-                        Explore Events →
-                    </span>
-
-                </div>
-
-            </a>
-
-
-            <!-- ACADEMIC EVENTS -->
-            <a href="events.html?category=Academic"
-               class="category-card">
-
-                <img
-                    src="images/academic.jpg"
-                    alt="Academic Events"
-                    class="category-image">
-
-                <div class="category-content">
-
-                    <h3>Academic Events</h3>
-
-                    <p>
-                        Explore workshops, research presentations,
-                        guest lectures, and academic conferences.
-                    </p>
-
-                    <span class="explore-link">
-                        Explore Events →
-                    </span>
-
-                </div>
-
-            </a>
-
-
-            <!-- CITT EVENTS -->
-            <a href="events.html?category=CITT"
-               class="category-card">
-
-                <img
-                    src="images/citt.jpg"
-                    alt="CITT Events"
-                    class="category-image">
-
-                <div class="category-content">
-
-                    <h3>CITT Events</h3>
-
-                    <p>
-                        Discover technology workshops, exhibitions,
-                        and other events organized by CITT.
-                    </p>
-
-                    <span class="explore-link">
-                        Explore Events →
-                    </span>
-
-                </div>
-
-            </a>
-
-
-            <!-- OTHER EVENTS -->
-            <a href="events.html?category=Other"
-               class="category-card">
-
-                <img
-                    src="images/others.jpg"
-                    alt="Other University Events"
-                    class="category-image">
-
-                <div class="category-content">
-
-                    <h3>Other University Events</h3>
-
-                    <p>
-                        Discover cultural festivals, entertainment,
-                        community activities, and other campus events.
-                    </p>
-
-                    <span class="explore-link">
-                        Explore Events →
-                    </span>
-
-                </div>
-
-            </a>
-
-        </div>
-
-    </section>
-
-
-    <!-- UPCOMING EVENTS -->
-    <section class="upcoming-section" id="upcoming-events">
-
-        <div class="section-heading">
-
-            <p class="small-heading">DON'T MISS OUT</p>
-
-            <h2>Upcoming Events</h2>
-
-            <p>
-                Explore university events published by authorized
-                Event Managers and administrators.
-            </p>
-
-        </div>
-
-        <div class="events-grid" id="eventsGrid">
-
-            <p class="loading-events">
-                Loading published events...
-            </p>
-
-        </div>
-
-    </section>
-
-
-    <!-- MY ACTIVITIES -->
-    <section class="activities-section" id="activities">
-
-        <div class="activities-box">
-
-            <div class="activities-icon">📅</div>
-
-            <div class="activities-text">
-
-                <h2>My Activities</h2>
-
-                <p>
-                    In a future version, you will be able to view
-                    events you have joined and keep track of your plans.
-                </p>
 
             </div>
 
-            <a href="#upcoming-events" class="activities-button">
-                Explore Events
+            <span class="profile-icon" aria-hidden="true">S</span>
+
+            <a class="signout" href="signin.html">
+                <svg class="icon" aria-hidden="true"><use href="#i-logout"/></svg>
+                <span>Sign out</span>
             </a>
 
         </div>
 
-    </section>
-
-</main>
+    </header>
 
 
-<!-- FOOTER -->
-<footer>
+    <main>
 
-    <div class="footer-logo">Zula</div>
+        <!-- WELCOME + SEARCH -->
+        <section class="welcome">
 
-    <p>
-        Connecting MUST students with university activities.
-    </p>
+            <div class="welcome-inner">
 
-    <p class="copyright">
-        &copy; 2026 Zula | MUST Events Platform
-    </p>
+                <h1>Welcome to Zula</h1>
 
-</footer>
+                <p>
+                    Discover what's happening at MUST. Find events, explore
+                    activities and stay connected with your university community.
+                </p>
+
+                <form class="search-box" id="eventSearchForm" role="search">
+
+                    <div class="search-field">
+                        <svg class="icon" aria-hidden="true"><use href="#i-search"/></svg>
+                        <input
+                            id="eventSearch"
+                            type="search"
+                            placeholder="Search by event name, category or venue"
+                            aria-label="Search events">
+                    </div>
+
+                    <button type="submit">Search</button>
+
+                    <button type="button" class="clear-button" id="clearSearch">Clear</button>
+
+                </form>
+
+                <p id="searchMessage" class="search-message" aria-live="polite"></p>
+
+            </div>
+
+        </section>
 
 
-<!-- STUDENT DASHBOARD JAVASCRIPT -->
-<script type="module" src="js/studentDashboard.js"></script>
+        <!-- EVENT CATEGORIES -->
+        <section class="categories-section" id="categories">
+
+            <div class="section-heading">
+                <h2>Explore event categories</h2>
+                <p>Choose a category to discover events that interest you.</p>
+            </div>
+
+            <div class="category-grid">
+
+                <a href="events.html?category=Association" class="category-card">
+                    <img src="images/associations.jpg" alt="" class="category-image">
+                    <span class="category-chip"><svg class="icon" aria-hidden="true"><use href="#i-users"/></svg></span>
+                    <div class="category-content">
+                        <h3>Association Events</h3>
+                        <p>Association meetings, elections, celebrations and student-led activities.</p>
+                        <span class="explore-link">Explore events <svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></span>
+                    </div>
+                </a>
+
+                <a href="events.html?category=Administration" class="category-card">
+                    <img src="images/adminstration.jpg" alt="" class="category-image">
+                    <span class="category-chip"><svg class="icon" aria-hidden="true"><use href="#i-landmark"/></svg></span>
+                    <div class="category-content">
+                        <h3>University Administration</h3>
+                        <p>Official ceremonies, orientations and university-wide meetings.</p>
+                        <span class="explore-link">Explore events <svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></span>
+                    </div>
+                </a>
+
+                <a href="events.html?category=Sports" class="category-card">
+                    <img src="images/games.jpg" alt="" class="category-image">
+                    <span class="category-chip"><svg class="icon" aria-hidden="true"><use href="#i-trophy"/></svg></span>
+                    <div class="category-content">
+                        <h3>Games &amp; Sports</h3>
+                        <p>Football, basketball, athletics and inter-faculty competitions.</p>
+                        <span class="explore-link">Explore events <svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></span>
+                    </div>
+                </a>
+
+                <a href="events.html?category=Academic" class="category-card">
+                    <img src="images/academic.jpg" alt="" class="category-image">
+                    <span class="category-chip"><svg class="icon" aria-hidden="true"><use href="#i-book"/></svg></span>
+                    <div class="category-content">
+                        <h3>Academic Events</h3>
+                        <p>Workshops, research presentations, guest lectures and conferences.</p>
+                        <span class="explore-link">Explore events <svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></span>
+                    </div>
+                </a>
+
+                <a href="events.html?category=CITT" class="category-card">
+                    <img src="images/citt.jpg" alt="" class="category-image">
+                    <span class="category-chip"><svg class="icon" aria-hidden="true"><use href="#i-cpu"/></svg></span>
+                    <div class="category-content">
+                        <h3>CITT Events</h3>
+                        <p>Technology workshops, exhibitions and other events organized by CITT.</p>
+                        <span class="explore-link">Explore events <svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></span>
+                    </div>
+                </a>
+
+                <a href="events.html?category=Other" class="category-card">
+                    <img src="images/others.jpg" alt="" class="category-image">
+                    <span class="category-chip"><svg class="icon" aria-hidden="true"><use href="#i-grid"/></svg></span>
+                    <div class="category-content">
+                        <h3>Other University Events</h3>
+                        <p>Cultural festivals, entertainment and other community activities.</p>
+                        <span class="explore-link">Explore events <svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></span>
+                    </div>
+                </a>
+
+            </div>
+
+        </section>
 
 
+        <!-- UPCOMING EVENTS -->
+        <section class="upcoming-section" id="upcoming-events">
+
+            <div class="section-heading">
+                <h2>Upcoming events</h2>
+                <p>Events published by authorized Event Managers and administrators.</p>
+            </div>
+
+            <div class="events-grid" id="eventsGrid">
+                <p class="loading-events">Loading published events...</p>
+            </div>
+
+        </section>
+
+
+        <!-- MY ACTIVITIES -->
+        <section class="activities-section" id="activities">
+
+            <div class="activities-box">
+
+                <span class="activities-icon" aria-hidden="true">
+                    <svg class="icon" aria-hidden="true"><use href="#i-calendar-check"/></svg>
+                </span>
+
+                <div class="activities-text">
+                    <h2>My activities</h2>
+                    <p>
+                        In a future version, you will be able to view events
+                        you have joined and keep track of your plans.
+                    </p>
+                </div>
+
+                <a href="#upcoming-events" class="activities-button">Explore events</a>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="footer-logo">Zula<span>.</span></div>
+        <p>Connecting MUST students with university activities.</p>
+        <p class="copyright">&copy; 2026 Zula | MUST Events Platform</p>
+    </footer>
+
+    <script type="module" src="js/studentDashboard.js"></script>
 </body>
 </html>
